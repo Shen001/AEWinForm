@@ -1,6 +1,6 @@
 ﻿/* ============================================================
 * Filename:		InitialLicenseHelper
-* Created:		1//9/2015 11:22 AM
+* Created:		1/9/2015 11:22 AM
 * MachineName:  
 * Author:		Shenxin
 * Description: 
