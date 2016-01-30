@@ -17,7 +17,7 @@ using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.Display;
 namespace SeanShen.CustomControls
 {
-    internal class Custom_ColorRampCombobox : ComboBox//内部组件则不会出现在其他的命名空间中
+    public class Custom_ColorRampCombobox : ComboBox//内部组件则不会出现在其他的命名空间中
     {                                               //命名空间下元素不能显示申明为private、protected与protected internal
         public Custom_ColorRampCombobox()
         {

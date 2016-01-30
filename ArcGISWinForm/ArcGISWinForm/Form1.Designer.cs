@@ -31,8 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.button1 = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.ucColorRampSelector1 = new SeanShen.CustomControls.ucColorRampSelector();
             this.axLicenseControl1 = new ESRI.ArcGIS.Controls.AxLicenseControl();
+            this.ucColorRampSelector1 = new SeanShen.CustomControls.ucColorRampSelector();
+            this.mixedCheckBoxesTreeView1 = new SeanShen.CustomControls.MixedCheckBoxesTreeView();
             ((System.ComponentModel.ISupportInitialize)(this.axLicenseControl1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,13 +55,6 @@
             this.richTextBox1.TabIndex = 2;
             this.richTextBox1.Text = "";
             // 
-            // ucColorRampSelector1
-            // 
-            this.ucColorRampSelector1.Location = new System.Drawing.Point(574, 162);
-            this.ucColorRampSelector1.Name = "ucColorRampSelector1";
-            this.ucColorRampSelector1.Size = new System.Drawing.Size(152, 22);
-            this.ucColorRampSelector1.TabIndex = 6;
-            // 
             // axLicenseControl1
             // 
             this.axLicenseControl1.Enabled = true;
@@ -70,18 +64,33 @@
             this.axLicenseControl1.Size = new System.Drawing.Size(32, 32);
             this.axLicenseControl1.TabIndex = 4;
             // 
+            // ucColorRampSelector1
+            // 
+            this.ucColorRampSelector1.Custom_ColorRampCBB = null;
+            this.ucColorRampSelector1.Location = new System.Drawing.Point(573, 50);
+            this.ucColorRampSelector1.Name = "ucColorRampSelector1";
+            this.ucColorRampSelector1.Size = new System.Drawing.Size(152, 22);
+            this.ucColorRampSelector1.TabIndex = 5;
+            // 
+            // mixedCheckBoxesTreeView1
+            // 
+            this.mixedCheckBoxesTreeView1.Location = new System.Drawing.Point(573, 89);
+            this.mixedCheckBoxesTreeView1.Name = "mixedCheckBoxesTreeView1";
+            this.mixedCheckBoxesTreeView1.Size = new System.Drawing.Size(152, 144);
+            this.mixedCheckBoxesTreeView1.TabIndex = 6;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(940, 425);
+            this.Controls.Add(this.mixedCheckBoxesTreeView1);
             this.Controls.Add(this.ucColorRampSelector1);
             this.Controls.Add(this.axLicenseControl1);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.button1);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.axLicenseControl1)).EndInit();
             this.ResumeLayout(false);
 
@@ -91,8 +100,9 @@
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.RichTextBox richTextBox1;
-        private SeanShen.CustomControls.ucColorRampSelector ucColorRampSelector1;
         private ESRI.ArcGIS.Controls.AxLicenseControl axLicenseControl1;
+        private SeanShen.CustomControls.ucColorRampSelector ucColorRampSelector1;
+        private SeanShen.CustomControls.MixedCheckBoxesTreeView mixedCheckBoxesTreeView1;
     }
 }
 

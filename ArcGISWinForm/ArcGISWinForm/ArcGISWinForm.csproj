@@ -146,6 +146,10 @@
       <Project>{91D957AB-2128-4618-907F-78661244C507}</Project>
       <Name>AEUtilities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CustomControls\CustomControls.csproj">
+      <Project>{CF4F4A0D-61B4-421D-9E80-18B9BF7BAF91}</Project>
+      <Name>CustomControls</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DotNetUtilities\DotNetUtilities.csproj">
       <Project>{88191AA4-E33E-4505-A6E2-CC470B6D8CD2}</Project>
       <Name>DotNetUtilities</Name>

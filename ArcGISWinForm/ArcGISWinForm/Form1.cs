@@ -12,10 +12,12 @@ using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
 
 
-using SeanShen.AEUtilities;
+
 using System.Configuration;
 namespace ArcGISWinForm
 {
+    using SeanShen.AEUtilities;
+    using SeanShen.CustomControls;
     public partial class Form1 : Form
     {
         public Form1()
@@ -42,6 +44,11 @@ namespace ArcGISWinForm
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            this.mixedCheckBoxesTreeView1.CheckBoxes = true;
+            HiddenCheckBoxTreeNode hideNode = new HiddenCheckBoxTreeNode("隐藏checkbox");
+            this.mixedCheckBoxesTreeView1.Nodes.Add(hideNode);
+            TreeNode node = new TreeNode("不隐藏checkbox");
+            this.mixedCheckBoxesTreeView1.Nodes[0].Nodes.Add(node);
 
             //this.custom_ColorRampCombobox.Dock = DockStyle.Fill;
             //this.axSymbologyControl1.Visible = false;
