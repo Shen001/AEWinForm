@@ -4,9 +4,10 @@ using System.Linq;
 using System.Windows.Forms;
 using ESRI.ArcGIS.esriSystem;
 
-using SeanShen.AEUtilities;
+
 namespace ArcGISWinForm
 {
+    using SeanShen.AEUtilities;
     static class Program
     {
         private static InitialLicenseHelper aoInitial = new InitialLicenseHelper();

@@ -13,6 +13,7 @@ using ESRI.ArcGIS.Controls;
 
 
 using SeanShen.AEUtilities;
+using System.Configuration;
 namespace ArcGISWinForm
 {
     public partial class Form1 : Form
@@ -20,8 +21,9 @@ namespace ArcGISWinForm
         public Form1()
         {
             InitializeComponent();
-            this.button1.Click += new EventHandler(button1_Click);
-            this.richTextBox1.TextChanged += new EventHandler(richTextBox1_TextChanged);
+            this.Load+=new EventHandler(Form1_Load);
+            //this.button1.Click += new EventHandler(button1_Click);
+            //this.richTextBox1.TextChanged += new EventHandler(richTextBox1_TextChanged);
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -40,8 +42,15 @@ namespace ArcGISWinForm
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
-            //this.dataGridView1.Rows
+
+            //this.custom_ColorRampCombobox.Dock = DockStyle.Fill;
+            //this.axSymbologyControl1.Visible = false;
+
+            //string stylePath = ConfigurationManager.AppSettings["ESRI.ServerStyle"];
+            ////颜色带
+            //this.axSymbologyControl1.StyleClass = esriSymbologyStyleClass.esriStyleClassColorRamps;
+            //this.axSymbologyControl1.LoadStyleFile(stylePath);
+            //this.custom_ColorRampCombobox.SymbologyStyleClass = this.axSymbologyControl1.GetStyleClass(this.axSymbologyControl1.StyleClass);
             
         }
         private void InitialDGVColumn()

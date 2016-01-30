@@ -27,16 +27,14 @@ namespace SeanShen.AEUtilities
      ***/
     public class LoadDataHelper
     {
-        //1.加载MXD
         //2.加载Lyr
         //3.加载Shp
-        //4.打开CAD数据 4.1-ArcEngine接口，4.2-netDXF.dll
-
-
-
+        //4.打开CAD数据 4.1-ArcEngine接口，4.2-netDXF.dll--使用开源插件，主要用于导出为dxf文件
 
         #region 加载CAD数据
+
         /***4.1-ArcEngine接口***/
+
         /// <summary>
         /// 通过指定的本地路径打开CAD所有图层数据
         /// </summary>

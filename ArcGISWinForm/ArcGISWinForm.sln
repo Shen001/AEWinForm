@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AEUtilities", "AEUtilities\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetUtilities", "DotNetUtilities\DotNetUtilities.csproj", "{88191AA4-E33E-4505-A6E2-CC470B6D8CD2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PlugIn", "PlugIn", "{04499922-5317-4D5B-997C-1CF41FB6C14D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomControls", "CustomControls\CustomControls.csproj", "{CF4F4A0D-61B4-421D-9E80-18B9BF7BAF91}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +53,16 @@ Global
 		{88191AA4-E33E-4505-A6E2-CC470B6D8CD2}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{88191AA4-E33E-4505-A6E2-CC470B6D8CD2}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{88191AA4-E33E-4505-A6E2-CC470B6D8CD2}.Release|x86.ActiveCfg = Release|Any CPU
+		{CF4F4A0D-61B4-421D-9E80-18B9BF7BAF91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF4F4A0D-61B4-421D-9E80-18B9BF7BAF91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF4F4A0D-61B4-421D-9E80-18B9BF7BAF91}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{CF4F4A0D-61B4-421D-9E80-18B9BF7BAF91}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{CF4F4A0D-61B4-421D-9E80-18B9BF7BAF91}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CF4F4A0D-61B4-421D-9E80-18B9BF7BAF91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF4F4A0D-61B4-421D-9E80-18B9BF7BAF91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF4F4A0D-61B4-421D-9E80-18B9BF7BAF91}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{CF4F4A0D-61B4-421D-9E80-18B9BF7BAF91}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{CF4F4A0D-61B4-421D-9E80-18B9BF7BAF91}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -56,5 +70,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{91D957AB-2128-4618-907F-78661244C507} = {04FE2157-385E-4326-B2A1-80FCD256C943}
 		{88191AA4-E33E-4505-A6E2-CC470B6D8CD2} = {04FE2157-385E-4326-B2A1-80FCD256C943}
+		{CF4F4A0D-61B4-421D-9E80-18B9BF7BAF91} = {04499922-5317-4D5B-997C-1CF41FB6C14D}
 	EndGlobalSection
 EndGlobal
