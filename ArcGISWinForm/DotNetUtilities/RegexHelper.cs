@@ -17,7 +17,20 @@ using System.Text.RegularExpressions;
 namespace SeanShen.DotNetUtilities
 {
     public class RegexHelper
-    { 
+    {
+        /// <summary>
+        /// 检测字符串是否为中文
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static bool CheckIsCH(string str)
+        {
+            Match mInfo = Regex.Match(str, @"[\u4e00-\u9fa5]");
+            if (mInfo.Success)
+                return true;
+            else
+                return false;
+        }
         /// <summary>
         /// 检测字符串中是否包含符合正则的子集
         /// </summary>

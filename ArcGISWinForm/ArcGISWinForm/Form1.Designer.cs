@@ -32,8 +32,9 @@
             this.button1 = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.axLicenseControl1 = new ESRI.ArcGIS.Controls.AxLicenseControl();
+            this.custom_FontFamilyCombobox1 = new SeanShen.CustomControls.Custom_FontFamilyCombobox();
+            this.mixedCheckBoxesTreeView1 = new SeanShen.CustomControls.Custom_MixedCheckBoxesTreeView();
             this.ucColorRampSelector1 = new SeanShen.CustomControls.ucColorRampSelector();
-            this.mixedCheckBoxesTreeView1 = new SeanShen.CustomControls.MixedCheckBoxesTreeView();
             ((System.ComponentModel.ISupportInitialize)(this.axLicenseControl1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,7 +46,6 @@
             this.button1.TabIndex = 1;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // richTextBox1
             // 
@@ -64,26 +64,39 @@
             this.axLicenseControl1.Size = new System.Drawing.Size(32, 32);
             this.axLicenseControl1.TabIndex = 4;
             // 
-            // ucColorRampSelector1
+            // custom_FontFamilyCombobox1
             // 
-            this.ucColorRampSelector1.Custom_ColorRampCBB = null;
-            this.ucColorRampSelector1.Location = new System.Drawing.Point(573, 50);
-            this.ucColorRampSelector1.Name = "ucColorRampSelector1";
-            this.ucColorRampSelector1.Size = new System.Drawing.Size(152, 22);
-            this.ucColorRampSelector1.TabIndex = 5;
+            this.custom_FontFamilyCombobox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.custom_FontFamilyCombobox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.custom_FontFamilyCombobox1.FormattingEnabled = true;
+            this.custom_FontFamilyCombobox1.IntegralHeight = false;
+            this.custom_FontFamilyCombobox1.Location = new System.Drawing.Point(542, 191);
+            this.custom_FontFamilyCombobox1.MaxDropDownItems = 20;
+            this.custom_FontFamilyCombobox1.Name = "custom_FontFamilyCombobox1";
+            this.custom_FontFamilyCombobox1.Size = new System.Drawing.Size(185, 22);
+            this.custom_FontFamilyCombobox1.TabIndex = 7;
             // 
             // mixedCheckBoxesTreeView1
             // 
-            this.mixedCheckBoxesTreeView1.Location = new System.Drawing.Point(573, 89);
+            this.mixedCheckBoxesTreeView1.Location = new System.Drawing.Point(542, 88);
             this.mixedCheckBoxesTreeView1.Name = "mixedCheckBoxesTreeView1";
-            this.mixedCheckBoxesTreeView1.Size = new System.Drawing.Size(152, 144);
+            this.mixedCheckBoxesTreeView1.Size = new System.Drawing.Size(121, 97);
             this.mixedCheckBoxesTreeView1.TabIndex = 6;
+            // 
+            // ucColorRampSelector1
+            // 
+            this.ucColorRampSelector1.Custom_ColorRampCBB = null;
+            this.ucColorRampSelector1.Location = new System.Drawing.Point(542, 60);
+            this.ucColorRampSelector1.Name = "ucColorRampSelector1";
+            this.ucColorRampSelector1.Size = new System.Drawing.Size(152, 22);
+            this.ucColorRampSelector1.TabIndex = 5;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(940, 425);
+            this.Controls.Add(this.custom_FontFamilyCombobox1);
             this.Controls.Add(this.mixedCheckBoxesTreeView1);
             this.Controls.Add(this.ucColorRampSelector1);
             this.Controls.Add(this.axLicenseControl1);
@@ -102,7 +115,8 @@
         private System.Windows.Forms.RichTextBox richTextBox1;
         private ESRI.ArcGIS.Controls.AxLicenseControl axLicenseControl1;
         private SeanShen.CustomControls.ucColorRampSelector ucColorRampSelector1;
-        private SeanShen.CustomControls.MixedCheckBoxesTreeView mixedCheckBoxesTreeView1;
+        private SeanShen.CustomControls.Custom_MixedCheckBoxesTreeView mixedCheckBoxesTreeView1;
+        private SeanShen.CustomControls.Custom_FontFamilyCombobox custom_FontFamilyCombobox1;
     }
 }
 

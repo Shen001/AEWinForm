@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 
 namespace SeanShen.CustomControls
 {
-    public class MixedCheckBoxesTreeView : TreeView
+    public class Custom_MixedCheckBoxesTreeView : TreeView
     {
         /// <summary>
         /// Specifies or receives attributes of a node
@@ -59,7 +59,7 @@ namespace SeanShen.CustomControls
                 // get TreeNode-object, that corresponds to TV_ITEM-object
                 TreeNode currentTN = TreeNode.FromHandle(this, tv_item.ItemHandle);
 
-                HiddenCheckBoxTreeNode hiddenCheckBoxTreeNode = currentTN as HiddenCheckBoxTreeNode;
+                Custom_HiddenCheckBoxTreeNode hiddenCheckBoxTreeNode = currentTN as Custom_HiddenCheckBoxTreeNode;
                 // check if it's HiddenCheckBoxTreeNode and
                 // if its checkbox already has been hidden
                 if (hiddenCheckBoxTreeNode != null && !hiddenCheckBoxTreeNode.CheckboxHidden)
@@ -85,7 +85,7 @@ namespace SeanShen.CustomControls
             base.OnBeforeCheck(e);
             // prevent checking/unchecking of HiddenCheckBoxTreeNode,
             // otherwise, we will have to repeat checkbox hiding
-            if (e.Node is HiddenCheckBoxTreeNode)
+            if (e.Node is Custom_HiddenCheckBoxTreeNode)
                 e.Cancel = true;
         }
     }
