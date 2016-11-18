@@ -98,9 +98,8 @@ namespace SeanShen.DotNetUtilities
                     return true;
                 return false;
             }
-            catch (Exception ex)
+            catch
             {
-
                 throw;
             }
         }

@@ -14,7 +14,7 @@ using System.Text;
 
 namespace SeanShen.AEUtilities
 {
-    public class FeatureLayerHelper
+    public class LayerHelper
     {
 
     }

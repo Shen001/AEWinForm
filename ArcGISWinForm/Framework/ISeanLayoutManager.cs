@@ -1,0 +1,21 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace SeanShen.Framework
+{
+        /*
+    Time: 18/11/2016 10:09 PM 周五
+    Author: shenxin
+    Description: 主窗体管理布局接口
+    Modify:
+    */
+    public interface ISeanLayoutManager
+    {
+        void LoadDefaultLayout();
+
+        void SaveCurrentLayout();
+
+    }
+}
