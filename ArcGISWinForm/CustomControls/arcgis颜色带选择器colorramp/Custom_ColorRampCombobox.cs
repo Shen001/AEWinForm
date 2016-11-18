@@ -57,7 +57,7 @@ namespace SeanShen.CustomControls
         private ISymbologyStyleClass m_SymbologyStyleClass = null;
         private List<IStyleGalleryItem> m_SymbolArray = new List<IStyleGalleryItem>();
 
-        public ISymbologyStyleClass SymbologyStyleClass
+        internal ISymbologyStyleClass SymbologyStyleClass
         {
             get
             {
@@ -81,6 +81,7 @@ namespace SeanShen.CustomControls
                         this.Items.Add(image);
                         this.m_SymbolArray.Add(item);
                     }
+                    this.SelectedIndex = 0;
                     this.EndUpdate();
                 }
             }

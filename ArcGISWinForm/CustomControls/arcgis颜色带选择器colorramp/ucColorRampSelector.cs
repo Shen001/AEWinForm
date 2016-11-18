@@ -36,12 +36,15 @@ namespace SeanShen.CustomControls
             this.axSymbologyControl1.Visible = false;
 
             string stylePath = ConfigurationManager.AppSettings["ESRI.ServerStyle"];
-            //颜色带
-            this.axSymbologyControl1.StyleClass = esriSymbologyStyleClass.esriStyleClassColorRamps;
-            this.axSymbologyControl1.LoadStyleFile(stylePath);
-            this.custom_ColorRampCombobox.SymbologyStyleClass = this.axSymbologyControl1.GetStyleClass(this.axSymbologyControl1.StyleClass);
+            if (System.IO.File.Exists(stylePath))
+            {
+                //颜色带
+                this.axSymbologyControl1.StyleClass = esriSymbologyStyleClass.esriStyleClassColorRamps;
+                this.axSymbologyControl1.LoadStyleFile(stylePath);
+                this.custom_ColorRampCombobox.SymbologyStyleClass = this.axSymbologyControl1.GetStyleClass(this.axSymbologyControl1.StyleClass);
 
-            this.custom_ColorRampCBB = this.custom_ColorRampCombobox;
+                this.custom_ColorRampCBB = this.custom_ColorRampCombobox;
+            }
         }
     }
 }
