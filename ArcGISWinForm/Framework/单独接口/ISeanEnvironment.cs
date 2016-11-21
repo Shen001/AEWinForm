@@ -5,12 +5,12 @@ using System.Text;
 
 namespace SeanShen.Framework
 {
-        /*
+    /*
     Time: 18/11/2016 10:09 PM 周五
     Author: shenxin
     Description: 全局环境变量绑定到Environment的GlobalData上
     Modify:
-*/
+    */
 
 
     /// <summary>
@@ -29,7 +29,7 @@ namespace SeanShen.Framework
         ISeanMachine Machine { get; }
 
         /// <summary>
-        /// 系统全局参数
+        /// 系统全局参数hashtable
         /// </summary>
         System.Collections.Hashtable GlobalData { get; }
     }

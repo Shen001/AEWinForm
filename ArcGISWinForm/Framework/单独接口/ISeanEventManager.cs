@@ -6,11 +6,11 @@ using System.Text;
 namespace SeanShen.Framework
 {
     /*
-Time: 18/11/2016 10:09 PM 周五
-Author: shenxin
-Description: 用于对注册事件管理
-Modify:
-*/
+    Time: 18/11/2016 10:09 PM 周五
+    Author: shenxin
+    Description: 用于对注册事件管理，可以和全局的globaldata搭配使用
+    Modify:
+    */
 
 
     /// <summary>

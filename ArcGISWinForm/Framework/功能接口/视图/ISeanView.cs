@@ -5,18 +5,16 @@ using System.Text;
 
 namespace SeanShen.Framework
 {
-        /*
+    /*
     Time: 18/11/2016 10:09 PM 周五
     Author: shenxin
-    Description: 容器接口
+    Description: 所有视图接口
     Modify:
     */
-    public interface ISeanDockWindow:ISeanResource
+    public interface ISeanView:ISeanResource
     {
         System.Windows.Forms.Control GetControl();
 
         void Show();
-
-        void Hide();
     }
 }

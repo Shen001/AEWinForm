@@ -7,19 +7,37 @@ using ESRI.ArcGIS.esriSystem;
 
 namespace SeanShen.AEUtilities
 {
+/*
+Time: 21/11/2016 10:49 PM 周一
+Author: shenxin
+Description: 自动初始化证书
+Modify:
+*/
+			
     public class AutoInitializer
     {
 
         //静态私有化对象
         private static LicenseInitializer m_AOLicenseInitializer = new LicenseInitializer();
-        //初始化证书
+       /// <summary>
+       /// 初始化证书
+       /// </summary>
         public static void InitialLicense()
         {
             //ESRI License Initializer generated code.
             m_AOLicenseInitializer.InitializeApplication(new esriLicenseProductCode[] { esriLicenseProductCode.esriLicenseProductCodeEngineGeoDB },
-            new esriLicenseExtensionCode[] { esriLicenseExtensionCode.esriLicenseExtensionCodeNetwork });
+            new esriLicenseExtensionCode[] { esriLicenseExtensionCode.esriLicenseExtensionCodeNetwork, esriLicenseExtensionCode.esriLicenseExtensionCodeDataInteroperability });
         }
-        //路径
+        /// <summary>
+        /// 关闭
+        /// </summary>
+        public static void ShutdownApplication()
+        {
+            m_AOLicenseInitializer.ShutdownApplication();
+        }
+        /// <summary>
+        /// AO的路径
+        /// </summary>
         public static string Path
         {
             get
@@ -29,7 +47,9 @@ namespace SeanShen.AEUtilities
                 return m_AOLicenseInitializer.GetCurrentRuntimeInfo().Path;
             }
         }
-        //Product
+        /// <summary>
+        /// 产品名
+        /// </summary>
         public static string Product
         {
             get
@@ -41,7 +61,9 @@ namespace SeanShen.AEUtilities
                 return product;
             }
         }
-        //版本
+        /// <summary>
+        /// 版本号
+        /// </summary>
         public static string Version
         {
             get

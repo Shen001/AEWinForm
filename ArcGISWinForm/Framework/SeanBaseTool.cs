@@ -11,13 +11,13 @@ namespace SeanShen.Framework
     Description: 所有与AO相关的command
     Modify:
     */
-    public abstract class SeanBaseTool : ESRI.ArcGIS.ADF.BaseClasses.BaseTool, ISeanCommand//这里只继承BaseTool，因为它实现了 BaseCommand, ESRI.ArcGIS.SystemUI.ICommand, ESRI.ArcGIS.SystemUI.ITool
+    public abstract class SeanBaseTool : ESRI.ArcGIS.ADF.BaseClasses.BaseTool, ISeanCommand//这里只继承BaseTool，因为它实现了 BaseCommand, ESRI.ArcGIS.SystemUI.ICommand, ESRI.ArcGIS.SystemUI.ITool三者
     {
         protected ISeanApplication m_Application = null;
         protected ESRI.ArcGIS.Controls.IMapControlDefault m_MapControl = null;
 
         # region ISeanCommand
-        public new virtual System.Drawing.Bitmap Bitmap { get { return null;} }
+        public new virtual System.Drawing.Bitmap Bitmap { get { return null; } }
         /// <summary>
         /// 分类
         /// </summary>
@@ -25,12 +25,14 @@ namespace SeanShen.Framework
 
         public new virtual bool Enabled { get { return true; } }//如有需要可以修改
 
-        public new virtual bool Checked { get 
+        public new virtual bool Checked
         {
-            if (this.m_Application.CurrentCommand == this)
-                return true;
-            return false;
-        }
+            get
+            {
+                if (this.m_Application.CurrentCommand == this)
+                    return true;
+                return false;
+            }
         }
 
         public virtual void Run()

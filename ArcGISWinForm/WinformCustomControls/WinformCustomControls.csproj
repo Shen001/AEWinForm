@@ -8,8 +8,8 @@
     <ProjectGuid>{CF4F4A0D-61B4-421D-9E80-18B9BF7BAF91}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SeanShen.CustomControls</RootNamespace>
-    <AssemblyName>SeanShen.CustomControls</AssemblyName>
+    <RootNamespace>SeanShen.WinformCustomControls</RootNamespace>
+    <AssemblyName>SeanShen.WinformCustomControls</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

@@ -24,7 +24,9 @@ namespace SeanShen.Framework
         bool Checked { get; }
 
         string Tooltip { get; }
-
-        void Run();//运行命令
+        /// <summary>
+        /// 运行命令
+        /// </summary>
+        void Run();
     }
 }
