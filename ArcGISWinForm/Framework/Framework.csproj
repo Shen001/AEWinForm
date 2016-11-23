@@ -35,8 +35,16 @@
     <Reference Include="ESRI.ArcGIS.ADF.Local, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
+    <Reference Include="ESRI.ArcGIS.Carto, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
     <Reference Include="ESRI.ArcGIS.Controls, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Geodatabase, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="ESRI.ArcGIS.SystemUI, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -54,26 +62,31 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="enum\enumResourceType.cs" />
+    <Compile Include="ResourceConfigStructure.cs" />
+    <Compile Include="管理控制器\IMXDManager.cs" />
     <Compile Include="功能接口\视图\ISeanMapControlView.cs" />
     <Compile Include="功能接口\视图\ISeanDockWindow.cs" />
-    <Compile Include="功能接口\视图\IStatusBar.cs" />
+    <Compile Include="功能接口\视图\ISeanStatusBar.cs" />
     <Compile Include="单独接口\ISeanEnvironment.cs" />
     <Compile Include="单独接口\ISeanEventManager.cs" />
     <Compile Include="单独接口\ISeanLayoutManager.cs" />
-    <Compile Include="功能接口\用户与机器\ISeanMachine.cs" />
+    <Compile Include="用户与机器\ISeanMachine.cs" />
     <Compile Include="功能接口\视图\ISeanPagelayoutView.cs" />
     <Compile Include="功能接口\视图\ISeanTocWindow.cs" />
     <Compile Include="单独接口\ISeanApplication.cs" />
     <Compile Include="功能接口\command\ISeanCommand.cs" />
     <Compile Include="功能接口\ISeanResource.cs" />
     <Compile Include="功能接口\command\ISeanTool.cs" />
-    <Compile Include="功能接口\用户与机器\ISeanUser.cs" />
+    <Compile Include="用户与机器\ISeanUser.cs" />
     <Compile Include="功能接口\视图\ISeanView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SeanBaseCommand.cs" />
     <Compile Include="SeanBaseTool.cs" />
+    <Compile Include="管理控制器\ISeanContextMenuManager.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="README.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

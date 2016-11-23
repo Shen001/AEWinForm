@@ -13,20 +13,18 @@ namespace SeanShen.Framework
     */
     public enum enumResourceType
     {
-        wgsUnkown,
+        Unkown,
 
-        wgsCommand,//所有实现了ISeanCommand接口的类
+        Command,//所有实现了ISeanCommand接口的类
 
-        wgsDockableWindow,
+        DockableWindow,
 
-        wgsView,
+        View,
 
-        wgsTocWindow,
+        TocWindow,
 
-        wgsMapView,
+        MapView,
 
-        wgsPageLayoutView,
-
-        wgsFileView
+        PageLayoutView
     }
 }

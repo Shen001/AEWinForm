@@ -12,38 +12,70 @@ namespace SeanShen.Framework
     Author: shenxin
     Description: 框架应用主接口
     Modify:
-*/
+    */
     public interface ISeanApplication
     {
+        #region 属性
         /// <summary>
         /// 标题
         /// </summary>
-         string Caption { get; set; }
+        string Caption { get; set; }
         /// <summary>
         /// 窗体名称
         /// </summary>
-         string Name { get; set; }
+        string Name { get; }
         /// <summary>
         /// 应用程序句柄
         /// </summary>
-         int hWnd { get; set; }
+        int hWnd { get; set; }
         /// <summary>
         /// 当前的command
         /// </summary>
-         ISeanCommand CurrentCommand { get; set; }
+        ISeanCommand CurrentCommand { get; set; }
+        /// <summary>
+        /// 默认command，一般为pan
+        /// </summary>
+        ISeanCommand DefaultCommand { get; }
+        /// <summary>
+        /// 当前数据的workspace
+        /// </summary>
+        /// <returns></returns>
+        ESRI.ArcGIS.Geodatabase.Workspace Workspace { get; }
+        /// <summary>
+        /// map对象
+        /// </summary>
+        ESRI.ArcGIS.Carto.IMap Map { get; }
+        /// <summary>
+        /// 当前展示的view，mapcontrol或者是pagelayoutcontrol
+        /// </summary>
+        ISeanView CurrentView { get; }
+        /// <summary>
+        /// 选择集环境设置
+        /// </summary>
+        ESRI.ArcGIS.Carto.ISelectionEnvironment SelectionEnvironment { get; set; }
+        #endregion
 
-         ISeanCommand DefaultCommand { get; }
 
+        #region 方法
         /// <summary>
         /// 得到MapControl
         /// </summary>
         /// <returns></returns>
-         ESRI.ArcGIS.Controls.IMapControlDefault GetMapControl();
-
+        ESRI.ArcGIS.Controls.IMapControlDefault GetMapControl();
         /// <summary>
         /// 得到PagelayoutControl
         /// </summary>
         /// <returns></returns>
-         ESRI.ArcGIS.Controls.IPageLayoutControlDefault GetPagelayoutControl();
+        ESRI.ArcGIS.Controls.IPageLayoutControlDefault GetPagelayoutControl();
+        /// <summary>
+        /// 获得TOC
+        /// </summary>
+        /// <returns></returns>
+        ESRI.ArcGIS.Controls.ITOCControlDefault GetTOCControl();
+        /// <summary>
+        /// 关闭窗体
+        /// </summary>
+        void ShutDown();
+        #endregion
     }
 }

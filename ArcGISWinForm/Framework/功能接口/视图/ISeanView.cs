@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using System.Windows.Forms;
 namespace SeanShen.Framework
 {
     /*
@@ -13,7 +13,7 @@ namespace SeanShen.Framework
     */
     public interface ISeanView:ISeanResource
     {
-        System.Windows.Forms.Control GetControl();
+        Control GetControl();
 
         void Show();
     }

@@ -13,7 +13,7 @@ namespace SeanShen.Framework
     */
     public abstract class SeanBaseCommand:ISeanCommand
     {
-        protected ISeanApplication m_Application = null;//保护成员继承
+        protected ISeanApplication m_Application = null;//保护成员继承给子类
         protected ESRI.ArcGIS.Controls.IMapControlDefault m_MapControl = null;
 
         #region ISeanCommand成员
@@ -33,6 +33,8 @@ namespace SeanShen.Framework
             this.m_Application.CurrentCommand = this;//设置当前的command
         }
         # endregion
+
+
         #region ISeanResource成员
         public abstract Guid UID { get; }//抽象成员一定要重实现
 
@@ -40,10 +42,8 @@ namespace SeanShen.Framework
 
         public virtual enumResourceType Type//virtual不一定重实现
         {
-            get { return enumResourceType.wgsCommand; }
+            get { return enumResourceType.Command; }
         }
-
-        public virtual object UserData { get; set; }
         //每一个Command都需要设置该hook获得与当前的MapControl的联系
         public virtual void SetHook(ISeanApplication application)
         {

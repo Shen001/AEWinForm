@@ -44,16 +44,9 @@ namespace SeanShen.AEUtilities
             IMapDocument pMapDocument = new MapDocumentClass();
             pMapDocument.Open(mapControlDefault.DocumentFilename, "");
             pMapDocument.ReplaceContents(pMxdContents);
-            try
-            {
-                pMapDocument.Save(true, true);
-                return true;
-            }
-            catch
-            {
-                //MessageBox.Show("当前的文档文件发生共享冲突！请关闭其他打开该文档的应用。", "警告", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return false;
-            }
+
+            pMapDocument.Save(true, true);
+            return true;
         }
         #endregion
     }

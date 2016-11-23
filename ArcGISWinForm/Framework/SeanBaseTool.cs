@@ -52,10 +52,9 @@ namespace SeanShen.Framework
 
         public virtual enumResourceType Type//virtual不一定重实现
         {
-            get { return enumResourceType.wgsCommand; }
+            get { return enumResourceType.Command; }
         }
 
-        public virtual object UserData { get; set; }
         //每一个Command都需要设置该hook获得与当前的MapControl的联系
         public virtual void SetHook(ISeanApplication application)
         {

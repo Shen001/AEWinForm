@@ -58,9 +58,6 @@
     <Compile Include="arcgis颜色带选择器colorramp\Custom_ColorRampCombobox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Custom_FontFamilyCombobox.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="arcgis颜色带选择器colorramp\sample.cs" />
     <Compile Include="每个节点是否有checkbox的treeview\Custom_HiddenCheckBoxTreeNode.cs" />
     <Compile Include="每个节点是否有checkbox的treeview\Custom_MixedCheckBoxesTreeView.cs">

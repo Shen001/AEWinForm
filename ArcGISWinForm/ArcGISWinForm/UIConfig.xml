@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ROOT>
+  <RESOURCEPOOL>
+    <RESOURCE name="全图" clsid="7EA91BC1-97AA-4A22-B1EC-E0587465D531" class="SeanShen.MapViewCommand.MapFullExtentCommand,SeanShen.MapViewCommand"/>
+    <RESOURCE name="地图漫游" clsid="D55F27D6-B49C-41B6-9DE3-6E060BFC8B76" class="SeanShen.MapViewCommand.MapPanTool,SeanShen.MapViewCommand"/>      
+    
+    
+    
+    
+    
+    <!-- old config -->
+    <RESOURCE name="全图" clsid="F6A332AD-BAB2-70F3-AC81-8ABF02D969E8" class="SH3H.WGS.AE.PlugIn.WxZoomFullExtentCmd, SH3H.WGS.AE.PlugIn" />
+    <RESOURCE name="拉框放大" clsid="092B7CBC-69C9-3E50-3130-0490B846852C" class="SH3H.WGS.AE.PlugIn.WxZoomInToolCmd, SH3H.WGS.AE.PlugIn" />
+    <RESOURCE name="拉框缩小" clsid="a90b2b6b-4fad-37a8-c4de-8103ee06459f" class="SH3H.WGS.AE.PlugIn.WxZoomOutToolCmd, SH3H.WGS.AE.PlugIn" />
+    <RESOURCE name="移动" clsid="bc9c15e6-4abd-c2b7-e48d-3218e2d23d89" class="SH3H.WGS.AE.PlugIn.WxMapPanCmd, SH3H.WGS.AE.PlugIn" />
+    <RESOURCE name="前视图" clsid="511a2189-ca85-f01e-cd35-fe68be0044ee" class="SH3H.WGS.AE.PlugIn.WxMapLastExtentCmd, SH3H.WGS.AE.PlugIn" />
+    <RESOURCE name="后视图" clsid="8f261fef-8a78-0fc0-5e5b-49409b8fae9a" class="SH3H.WGS.AE.PlugIn.WxMapNextExtentCmd, SH3H.WGS.AE.PlugIn" />
+    <RESOURCE name="添加数据" clsid="9c886221-8125-94c2-4f84-e67d5de8748c" class="SH3H.WGS.AE.PlugIn.WxMapAddDataCmd, SH3H.WGS.AE.PlugIn" />
+    <RESOURCE name="地图查询" clsid="33f9f4fa-7e98-63e6-c771-4c0c5c28185c" class="SH3H.WGS.AE.PlugIn.WxMapIdentifyToolCmd, SH3H.WGS.AE.PlugIn" />
+    <RESOURCE name="选择要素" clsid="5e9b3d9b-6f1b-eec8-5822-5cd6e70a6aac" class="SH3H.WGS.AE.PlugIn.WxSelectFeatureToolCmd, SH3H.WGS.AE.PlugIn" />
+    <RESOURCE name="选择元素" clsid="81cbe2a6-5676-0349-95c4-638f8bf0f912" class="SH3H.WGS.AE.PlugIn.WxSelectElementToolCmd, SH3H.WGS.AE.PlugIn" />
+    <RESOURCE name="清除选择要素" clsid="5f9636f5-e07b-824d-4025-b559befb740c" class="SH3H.WGS.AE.PlugIn.WxClearSelectionCmd, SH3H.WGS.AE.PlugIn" />
+    <RESOURCE name="清除所有元素" clsid="cc37e748-1a99-c375-d11f-539f028e711f" class="SH3H.WGS.AE.PlugIn.WxClearAllElementCmd, SH3H.WGS.AE.PlugIn" />
+    <RESOURCE name="坐标定位" clsid="b8fdd01b-d22f-2e36-b710-2153d87d0308" class="SH3H.WGS.Common.PlugIn.WxGotoCoordinateCmd, SH3H.WGS.Common.PlugIn" />
+    <RESOURCE name="图层设置" clsid="EF285A65-EE8E-4099-B3FD-DE327F399781" class="SH3H.WGS.Common.PlugIn.WxSelectLayerSetCmd, SH3H.WGS.Common.PlugIn" />
+    <RESOURCE name="测面积" clsid="bffc0339-3d21-5166-7a11-5583250dbcc5" class="SH3H.WGS.Common.PlugIn.WxMeasureAreaTool, SH3H.WGS.Common.PlugIn" />
+    <RESOURCE name="测长度" clsid="767474df-4285-7f5c-d867-fae935005af6" class="SH3H.WGS.Common.PlugIn.WxMeasureLengthTool, SH3H.WGS.Common.PlugIn" />
+    <RESOURCE name="坐标拾取" clsid="9a64841c-4509-cc3f-f01d-86505743cad5" class="SH3H.WGS.Common.PlugIn.WxPickupCoordinateCmd, SH3H.WGS.Common.PlugIn" />
+    <!--<RESOURCE name="删除标注" clsid="4d6af3b7-764d-7220-867d-c02e004ef523" class="SH3H.WGS.Common.PlugIn.WxRemoveLabelCmd, SH3H.WGS.Common.PlugIn" />-->
+    <RESOURCE name="查询视图" clsid="deb8f771-9e4a-0c69-feeb-0ee15154685b" class="SH3H.WGS.Common.PlugIn.WxSelectByAttributeCmd, SH3H.WGS.Common.PlugIn" />
+    <RESOURCE name="管线所查询" clsid="A07FD22E-AFDF-42DB-B40F-121375F1DE40" class="SH3H.WGS.Common.PlugIn.WxSelectByGXSCmd, SH3H.WGS.Common.PlugIn" />
+    <RESOURCE name="加载Cad数据" clsid="2682d457-e813-b6c7-fa7c-c752d1490a9d" class="SH3H.WGS.Common.PlugIn.WxAddCadCmd, SH3H.WGS.Common.PlugIn" />
+    <RESOURCE name="加载Shp数据" clsid="461458E6-6D9C-4300-A7EA-EB2F4E504068" class="SH3H.WGS.Common.PlugIn.WxAddShpCmd, SH3H.WGS.Common.PlugIn" />
+    <RESOURCE name="添加注记" clsid="eeb4d75c-606a-2a36-1358-c81de360468c" class="SH3H.WGS.Common.PlugIn.WxAddLabelTool, SH3H.WGS.Common.PlugIn" />
+    <RESOURCE name="图形视图" clsid="ce71eadc-824c-b448-6b9c-3c609e60fa95" class="SH3H.WGS.Common.PlugIn.WxBookmarkerCmd, SH3H.WGS.Common.PlugIn" />
+    <RESOURCE name="添加地名地址" clsid="3345871C-EB92-4464-ADF9-C8A479DC54D0" class="SH3H.WGS.Common.PlugIn.WxAddGeocoderTool, SH3H.WGS.Common.PlugIn" />
+    <RESOURCE name="导出图片" clsid="9a4d444f-f5f4-37e0-9074-f787aace1f12" class="SH3H.WGS.Common.PlugIn.WxExportPicCmd, SH3H.WGS.Common.PlugIn" />
+    <RESOURCE name="导出选择对象" clsid="A8DF2791-7EF9-4C73-B637-021B573009BE" class="SH3H.WGS.DataManager.WxExportSelectFeatures, SH3H.WGS.DataManager" />
+    <RESOURCE name="按图幅导出" clsid="9917A47A-5C9F-4B96-A06A-41837D4439F3" class="SH3H.WGS.DataManager.WxExportDXFbyTF, SH3H.WGS.DataManager" />
+    <RESOURCE name="导出矢量文件" clsid="9553feca-018d-f877-6de5-b36c55f09957" class="SH3H.WGS.Common.PlugIn.WxExportShpCmd, SH3H.WGS.Common.PlugIn" />
+    <RESOURCE name="打开属性表" clsid="6A89E94C-376B-4071-8EF8-F811CFEAFC94" class="SH3H.WGS.Common.PlugIn.WxOpenLayerAttributesTableCmd, SH3H.WGS.Common.PlugIn" />
+    <RESOURCE name="删除图层" clsid="25D0A8F5-FB7D-4334-8832-F69056CB6112" class="SH3H.WGS.Common.PlugIn.WxRemoveLayerCmd, SH3H.WGS.Common.PlugIn" />
+    <RESOURCE name="缩放到图层" clsid="1EDDD5BE-8DB5-4F1B-BD6F-939214513AC4" class="SH3H.WGS.Common.PlugIn.WxMapZoonToLayerCmd, SH3H.WGS.Common.PlugIn" />
+    <RESOURCE name="标注对象" clsid="04DE1919-360A-438C-A85B-6FCCBB18392F" class="SH3H.WGS.Common.PlugIn.WxLabelFeatureCmd, SH3H.WGS.Common.PlugIn" />
+    <RESOURCE name="标注设置" clsid="EF886F9F-A382-4287-A6EF-F0C8B3400C50" class="SH3H.WGS.Common.PlugIn.WxLabelSetCmd, SH3H.WGS.Common.PlugIn" />
+    <RESOURCE name="选择设置" clsid="BF73739E-7A16-4A82-9B09-B85E22663245" class="SH3H.WGS.Common.PlugIn.WxSelectionSetCmd, SH3H.WGS.Common.PlugIn" />
+    <RESOURCE name="监测点查询" clsid="70171080-8D40-4962-9A09-E47E59C20FE7" class="SH3H.WGS.Query.WxQueryMonitorCmd, SH3H.WGS.Query" />
+    <RESOURCE name="项目查询" clsid="CA6BC3E6-06ED-4959-B2B8-9512E3B19F1A" class="SH3H.WGS.Query.WxProjectsQueryCmd, SH3H.WGS.Query" />
+    <RESOURCE name="日志查询" clsid="D7610E66-ED07-4445-990B-3AEB4560B630" class="SH3H.WGS.Query.WxLogQueryCmd, SH3H.WGS.Query" />
+    <RESOURCE name="节点样图查询" clsid="DDDB1114-2F02-4D2D-84F2-F8B876F7368A" class="SH3H.WGS.Query.WxNodePicQueryCmd, SH3H.WGS.Query" />
+    <RESOURCE name="流量计查询" clsid="54706D6B-1FFC-4DD5-AE2D-775C653CD553" class="SH3H.WGS.Query.WxParFlowmeterQueryCmd, SH3H.WGS.Query" />
+    <RESOURCE name="管线统计" clsid="20418944-B3D1-416E-A569-DDFF17403EF2" class="SH3H.WGS.Query.WxLineStatisticsCmd,SH3H.WGS.Query" />
+    <RESOURCE name="按道路查询" clsid="C7A5C364-87E5-4058-82B5-16CD4735C3C5" class="SH3H.WGS.Query.WxRoadFacilitiesCmd,SH3H.WGS.Query" />
+    <RESOURCE name="管网查询" clsid="de27623f-3831-fcf5-22e0-9d6886212563" class="SH3H.WGS.Query.WxOneQueryCmd, SH3H.WGS.Query" />
+    <RESOURCE name="开始编辑" clsid="f371e4da-b7db-a6ca-6bcd-e22d937b850c" class="SH3H.WGS.Edit.WxEditingStartCmd, SH3H.WGS.Edit" />
+    <RESOURCE name="保存编辑" clsid="e6aaf8e2-8353-0cd8-ea75-9449f7680721" class="SH3H.WGS.Edit.WxEditingSaveCmd, SH3H.WGS.Edit" />
+    <RESOURCE name="结束编辑" clsid="1f7d9b59-dbe0-e290-4d3f-fd0a03b499c2" class="SH3H.WGS.Edit.WxEditingStopCmd, SH3H.WGS.Edit" />
+    <RESOURCE name="新增点对象" clsid="118a1629-c96c-937a-ef62-52a138c0d7c9" class="SH3H.WGS.Edit.WxEditingNewPointTool, SH3H.WGS.Edit" />
+    <RESOURCE name="新增线对象" clsid="d95b1c06-84e1-c810-aa7c-7c247c8db66a" class="SH3H.WGS.Edit.WxEditingNewLineTool, SH3H.WGS.Edit" />
+    <RESOURCE name="编辑对象" clsid="ee449e00-67d0-31de-9410-97f63edfd5de" class="SH3H.WGS.Edit.WxEditingEditTool, SH3H.WGS.Edit" />
+    <RESOURCE name="撤销报废" clsid="A46EB038-32CE-4BE9-B733-56B9DBD24CFA" class="SH3H.WGS.Edit.WxEditingRevocationScrapTool, SH3H.WGS.Edit" />
+    <RESOURCE name="合并管线" clsid="D378ED6C-D5C9-4D09-839A-CF256277A531" class="SH3H.WGS.Edit.WxEditingCombineCmd, SH3H.WGS.Edit" />
+    <RESOURCE name="打断管线" clsid="E297D0FF-7E5F-48BB-AFED-C874D1CEB792" class="SH3H.WGS.Edit.WxEditingInterruptTool, SH3H.WGS.Edit" />
+    <RESOURCE name="节点样图编辑" clsid="BA256A29-2094-4856-B855-2E133AC07FA1" class="SH3H.WGS.Edit.WxEditingNodePicCmd, SH3H.WGS.Edit" />
+    <RESOURCE name="默认值设置" clsid="521CDA8A-C207-4EAC-802F-C18D65473D6A" class="SH3H.WGS.Edit.WxEditingSetNewFeatureDefaultAttr, SH3H.WGS.Edit" />
+    <RESOURCE name="复制对象" clsid="fca08633-44c3-484e-1aba-caa20436caf6" class="SH3H.WGS.Edit.WxEditingCopyCmd, SH3H.WGS.Edit" />
+    <RESOURCE name="剪切对象" clsid="681dfa42-8569-38f1-8f83-0ce4466888ff" class="SH3H.WGS.Edit.WxEditingCutCmd, SH3H.WGS.Edit" />
+    <RESOURCE name="粘贴对象" clsid="22626db8-ebae-f4e5-d6db-b1a3070c3114" class="SH3H.WGS.Edit.WxEditingPasteCmd, SH3H.WGS.Edit" />
+    <RESOURCE name="删除对象" clsid="aca56926-9189-413a-f58d-7efd8d54fc3b" class="SH3H.WGS.Edit.WxEditingClearCmd, SH3H.WGS.Edit" />
+    <RESOURCE name="属性设置" clsid="f5696893-a91f-1248-1470-d3882b9bbdb5" class="SH3H.WGS.Edit.WxEditingAttributeCmd, SH3H.WGS.Edit" />
+    <RESOURCE name="道路名修改" clsid="D2FEBBD5-630C-499A-AB91-737D5CA43AB9" class="SH3H.WGS.Edit.WxEditingYJGLNameCmd, SH3H.WGS.Edit" />
+    <RESOURCE name="捕捉" clsid="AE35DFCC-5F0C-4E4E-A4A5-8207D63E4B17" class="SH3H.WGS.Edit.WxEditingSetSnapCmd, SH3H.WGS.Edit" />
+    <RESOURCE name="撤销" clsid="268b3559-37d9-6718-0f0b-dce99edb2b93" class="SH3H.WGS.Edit.WxEditingUndoCmd, SH3H.WGS.Edit" />
+    <RESOURCE name="重做" clsid="73fe7164-d33a-85f7-c5dc-691669e2e9ef" class="SH3H.WGS.Edit.WxEditingRedoCmd, SH3H.WGS.Edit" />
+    <RESOURCE name="竣工图加载" clsid="9F3CE9CA-E915-4DC7-A78B-47EAA718D320" class="SH3H.WGS.DataManager.WxImportProjectInfoCmd, SH3H.WGS.DataManager" />
+    <RESOURCE name="竣工图更新" clsid="F7547ED6-528F-4DD8-B573-A571DE877B36" class="SH3H.WGS.DataManager.WxImportProjectTemplateCmd, SH3H.WGS.DataManager" />
+    <RESOURCE name="导入分区计量点" clsid="e9910eb6-4e16-b46f-8434-fd63e3bfd265" class="SH3H.WGS.DataManager.WxImportDistrictMeterCmd, SH3H.WGS.DataManager" />
+    <RESOURCE name="导入地名地址" clsid="39AA9CCA-F24B-4E4F-B870-7079D4EBB63F" class="SH3H.WGS.DataManager.WxImportGeocoderCmd, SH3H.WGS.DataManager" />
+    <RESOURCE name="导入水表集" clsid="CE650E26-2CCD-4601-9665-B3A8D8DE42E1" class="SH3H.WGS.DataManager.WxImportWaterMeterClusters, SH3H.WGS.DataManager" />
+    <RESOURCE name="添加水表集" clsid="1CBCB703-CEA2-41BF-B8DC-F886C6875550" class="SH3H.WGS.DataManager.WxAddWaterMeterClustersTool, SH3H.WGS.DataManager" />
+    <RESOURCE name="shape更新" clsid="0694D474-E6C6-41C6-862E-0B37E6013D3D" class="SH3H.WGS.DataManager.WxImportShptoDBbyNewObj, SH3H.WGS.DataManager" />
+    <RESOURCE name="报废管线" clsid="6C2E0ECC-1705-4094-A802-C2491CFB79D3" class="SH3H.WGS.DataManager.WxScrapPipelineTool, SH3H.WGS.DataManager" />
+    <RESOURCE name="孤立点检测工具" clsid="F223F498-7DE9-4169-B3E4-1B3911B8192F" class="SH3H.WGS.DataManager.WxCheckAcnodeTool, SH3H.WGS.DataManager" />
+    <RESOURCE name="孤立线检测工具" clsid="1FB2318D-2DB5-440F-BE53-FCE5C993DF5A" class="SH3H.WGS.DataManager.WxCheckIsolateLineTool, SH3H.WGS.DataManager" />
+    <RESOURCE name="重复线检测工具" clsid="B74C7BF6-3BCA-41DF-ABAB-B1890EC41357" class="SH3H.WGS.DataManager.WxCheckDuplicateLineTool, SH3H.WGS.DataManager" />
+    <RESOURCE name="连通性检查" clsid="F740D36B-CF18-4FA3-8AA6-F8D785EA8CA1" class="SH3H.WGS.DataManager.WxCheckConnectivityTool, SH3H.WGS.DataManager" />
+    <RESOURCE name="参数检查" clsid="503401D7-5734-46FD-9296-B6299951F16F" class="SH3H.WGS.DataManager.WxCheckParaCmd, SH3H.WGS.DataManager" />
+    <RESOURCE name="异常点检测" clsid="58092959-B36F-45DD-B431-0C7BCB59CC24" class="SH3H.WGS.DataManager.WxCheckExceptionPoint, SH3H.WGS.DataManager" />
+    <RESOURCE name="用户疑问" clsid="1CA9C2BF-1811-4CAF-95F4-4FBB996F0303" class="SH3H.WGS.DataManager.WxUserDoubtCmd, SH3H.WGS.DataManager" />
+    <RESOURCE name="疑问查询" clsid="DAC84206-8F64-4D88-A87A-E1A0F03DBBE4" class="SH3H.WGS.DataManager.WxQueryDoubtCmd, SH3H.WGS.DataManager" />
+    <RESOURCE name="疑问处理" clsid="89760C70-26DD-44B1-8967-B5F481214CBE" class="SH3H.WGS.DataManager.WxUserDoubtSolveCmd, SH3H.WGS.DataManager" />
+    <RESOURCE name="打印当前视图" clsid="D75FBD86-1702-4BFC-9C7E-AF21B03863FB" class="SH3H.WGS.Print.WxPrintCurrentViewCmd, SH3H.WGS.Print" />
+    <RESOURCE name="打印标准分幅图" clsid="7AD97569-AE89-4C4B-8FF9-0905BACB3E15" class="SH3H.WGS.Print.WxPrintFTTTool, SH3H.WGS.Print" />
+    <RESOURCE name="打印任意区域" clsid="20028BCD-CD02-42CD-A9A5-796B35DA44A1" class="SH3H.WGS.Print.WxPrintAnyAreaTool, SH3H.WGS.Print" />
+    <RESOURCE name="打印营业所" clsid="8A394422-B67B-42AC-B9DB-4A4C80855229" class="SH3H.WGS.Print.WxPrintStationCmd, SH3H.WGS.Print" />
+    <RESOURCE name="垂距分析" clsid="38182091-AC06-4D0B-B870-D838619C9181" class="SH3H.WGS.Analysis.WxIsochoreAlsyTool, SH3H.WGS.Analysis" />
+    <RESOURCE name="横断面分析" clsid="AEB4282A-3248-4BE5-AF81-0785C5D3D732" class="SH3H.WGS.Analysis.WxCrossSectionTool, SH3H.WGS.Analysis" />
+    <RESOURCE name="纵断面分析" clsid="49D6E6EB-0FB4-4362-9D7B-3109036E62ED" class="SH3H.WGS.Analysis.WxVerticalSectionTool, SH3H.WGS.Analysis" />
+    <RESOURCE name="爆管分析" clsid="A5DA4635-0056-4CF8-B79A-D025999DBB5A" class="SH3H.WGS.Analysis.WxCartridgeIgniterTool, SH3H.WGS.Analysis" />
+    <RESOURCE name="设为默认视图" clsid="61D0F5BD-DF68-4FF9-B2FA-A7AFAC98EB05" class="SH3H.WGS.Setting.WxSetDefaultLayout, SH3H.WGS.Setting" />
+    <RESOURCE name="恢复默认视图" clsid="17780647-FDF1-4D1B-BDE8-173FEC74F7C1" class="SH3H.WGS.Setting.WxLoadDefaultLayout, SH3H.WGS.Setting" />
+    <RESOURCE name="关于" clsid="C2DE8FC4-B9FE-4235-BE34-26BD58DE53C6" class="SH3H.WGS.Setting.WxAbout, SH3H.WGS.Setting" />
+    <RESOURCE name="帮助文件" clsid="9689F181-8863-4680-BD2F-C1F1AA5A2E71" class="SH3H.WGS.Setting.WxHelpFile, SH3H.WGS.Setting" />
+    <RESOURCE name="选择主题" clsid="8092E251-8166-45BC-96B0-182150BC4D69" class="SH3H.WGS.Setting.WxThemeSelector, SH3H.WGS.Setting" />
+    <RESOURCE name="停靠窗体控制" clsid="30D7CF4A-4DAF-481D-9FA4-07BD19B522AF" class="SH3H.WGS.Setting.WxShowDockbarCmd, SH3H.WGS.Setting" />
+    <RESOURCE name="图层控制" clsid="068B25E7-6F59-31AB-5DD7-3D5085797A51" class="SH3H.WGS.Controls.ucTocWindow, SH3H.WGS.Controls" />
+    <RESOURCE name="鹰眼视图" clsid="3B3049BC-C3E7-4074-A4F6-6AB4CB16431F" class="SH3H.WGS.Controls.ucEyeWindow, SH3H.WGS.Controls" />
+    <RESOURCE name="地名地址" clsid="F9F91697-1A87-48EB-B0C5-BEF955D6374C" class="SH3H.WGS.Controls.ucGeocoderWindow, SH3H.WGS.Controls" />
+    <!--<RESOURCE name="文件管理" clsid="AC22DAC7-D05A-4A18-968E-8A6D932DF918" class="SH3H.WGS.Controls.ucFileManageWindow, SH3H.WGS.Controls" />-->
+    <RESOURCE name="地图视图" clsid="AE55CE9F-93D9-B535-CCAE-49D445C6B5FC" class="SH3H.WGS.Controls.ucMapView, SH3H.WGS.Controls" />
+    <RESOURCE name="文件视图" clsid="4780BD53-E5DD-402E-8B46-2884CA5B26A9" class="SH3H.WGS.Controls.ucFileBrowserView, SH3H.WGS.Controls" />
+    <RESOURCE name="管道颜色分级" clsid="5E056889-D0F0-4C28-BE7B-FBDF2BDEEF9F" class="SH3H.WGS.DataManager.WxGraduatedWaterPipes, SH3H.WGS.DataManager" />
+  </RESOURCEPOOL>
+</ROOT>

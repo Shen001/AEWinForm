@@ -11,7 +11,7 @@ namespace SeanShen.Framework
     Description:窗体底部状态栏，类似于ArcMap
     Modify:
     */		
-    public interface IStatusBar
+    public interface ISeanStatusBar
     {
         /// <summary>
         /// 当前状态栏的信息，主要显示当前的command

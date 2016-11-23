@@ -84,6 +84,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -94,18 +95,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -134,14 +134,23 @@
       <Project>{91D957AB-2128-4618-907F-78661244C507}</Project>
       <Name>AEUtilities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WinformCustomControls\WinformCustomControls.csproj">
-      <Project>{CF4F4A0D-61B4-421D-9E80-18B9BF7BAF91}</Project>
-      <Name>WinformCustomControls</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DotNetUtilities\DotNetUtilities.csproj">
       <Project>{88191AA4-E33E-4505-A6E2-CC470B6D8CD2}</Project>
       <Name>DotNetUtilities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Framework\Framework.csproj">
+      <Project>{D4C6E4FE-EED6-4AFD-9889-056A5AF676ED}</Project>
+      <Name>Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WinformCustomControls\WinformCustomControls.csproj">
+      <Project>{CF4F4A0D-61B4-421D-9E80-18B9BF7BAF91}</Project>
+      <Name>WinformCustomControls</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="UIConfig.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

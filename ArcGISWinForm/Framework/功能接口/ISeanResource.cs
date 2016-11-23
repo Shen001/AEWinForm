@@ -26,7 +26,7 @@ namespace SeanShen.Framework
         /// <summary>
         /// 每个资源的自定义的配置数据
         /// </summary>
-        object UserData { get; set; }
+        //object UserData { get; set; }
         /// <summary>
         /// 为每个资源绑定当前的application
         /// </summary>
