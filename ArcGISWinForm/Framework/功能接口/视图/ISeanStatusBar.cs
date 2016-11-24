@@ -22,7 +22,7 @@ namespace SeanShen.Framework
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
-        void ShowCordinate(double x, double y);
+        void ShowCoordinate(double x, double y);
 
         void ShowProgressBar(string Message, int min, int max, int Step);
 

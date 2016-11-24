@@ -17,7 +17,11 @@ namespace SeanShen.Framework
         /// guid唯一标示符
         /// </summary>
         Guid UID { get; }
-        //资源名称
+        /// <summary>
+        /// 资源名称，一般作为中文
+        /// </summary>
+        string Caption { get; }
+        //资源名称-一般作为英文（类名）
         string Name { get; }
         /// <summary>
         /// 资源类型

@@ -13,6 +13,6 @@ namespace SeanShen.Framework
     */
     public interface ISeanMapControlView:ISeanView
     {
-        ESRI.ArcGIS.Controls.IMapControlDefault GetMapControl();
+        ESRI.ArcGIS.Controls.IMapControlDefault GetIMapControl();
     }
 }

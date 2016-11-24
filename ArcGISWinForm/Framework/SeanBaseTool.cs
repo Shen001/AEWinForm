@@ -16,8 +16,17 @@ namespace SeanShen.Framework
         protected ISeanApplication m_Application = null;
         protected ESRI.ArcGIS.Controls.IMapControlDefault m_MapControl = null;
 
+        #region  Override BaseTool
+
+        public override void OnCreate(object hook)
+        {
+            
+        }
+
+        #endregion
+        
         # region ISeanCommand
-        public new virtual System.Drawing.Bitmap Bitmap { get { return null; } }
+        public new abstract System.Drawing.Bitmap Bitmap { get; set; }
         /// <summary>
         /// 分类
         /// </summary>
@@ -48,7 +57,9 @@ namespace SeanShen.Framework
         #region ISeanResource成员
         public abstract Guid UID { get; }//抽象成员一定要重实现
 
-        public new abstract string Name { get; }
+        public new virtual string Name { get { return null; } }
+
+        public new abstract string Caption { get; }
 
         public virtual enumResourceType Type//virtual不一定重实现
         {
@@ -61,7 +72,7 @@ namespace SeanShen.Framework
             if (application == null)
                 return;
             this.m_Application = application;
-            this.m_MapControl = application.GetMapControl();
+            this.m_MapControl = application.GetIMapControl();
         }
         #endregion
     }

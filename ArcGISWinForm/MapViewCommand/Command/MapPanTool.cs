@@ -19,7 +19,7 @@ namespace SeanShen.MapViewCommand
         {
             try
             {
-                string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"images\UI\small16x16\PanTool16.png");
+                string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"images\UI\small_16x16\PanTool16.png");
                 this.m_Bitmap = new System.Drawing.Bitmap(path);
             }
             catch
@@ -28,7 +28,7 @@ namespace SeanShen.MapViewCommand
             }
         }
         #region ISeanCommand成员
-        public override System.Drawing.Bitmap Bitmap { get { return this.m_Bitmap; } }
+        public override System.Drawing.Bitmap Bitmap { get { return this.m_bitmap; } set { this.m_bitmap = value; } }
         /// <summary>
         /// 分类
         /// </summary>
@@ -60,7 +60,12 @@ namespace SeanShen.MapViewCommand
         #region ISeanResource成员
         public override Guid UID { get { return Guid.Parse("D55F27D6-B49C-41B6-9DE3-6E060BFC8B76"); } }//抽象成员一定要重实现
 
-        public override string Name { get { return "地图漫游"; } }
+        public override string Name { get { return "MapPanTool"; } }
+
+        public override string Caption
+        {
+            get { return "地图漫游"; }
+        }
         #endregion
     }
 }

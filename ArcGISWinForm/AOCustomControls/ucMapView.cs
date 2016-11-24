@@ -27,7 +27,7 @@ namespace SeanShen.AOCustomControls
             axMapControl1.Dock = DockStyle.Fill;
         }
 
-        public ESRI.ArcGIS.Controls.IMapControlDefault GetMapControl()
+        public ESRI.ArcGIS.Controls.IMapControlDefault GetIMapControl()
         {
             IMapControlDefault mapcontrol = this.axMapControl1.Object as IMapControlDefault;
             return mapcontrol;
@@ -54,7 +54,9 @@ namespace SeanShen.AOCustomControls
         /// </summary>
         public Guid UID { get { return Guid.Parse("44CB876E-4886-417E-8C89-D1855E222D7A"); } }
         //资源名称
-        string ISeanResource.Name { get { return "地图视图"; } }
+        string ISeanResource.Name { get { return "ucMapView"; } }
+
+        public string Caption { get { return "地图视图"; } }
         /// <summary>
         /// 资源类型
         /// </summary>

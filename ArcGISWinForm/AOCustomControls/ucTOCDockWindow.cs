@@ -27,7 +27,7 @@ namespace SeanShen.AOCustomControls
         }
 
         # region ISeanTOCWindow
-        public ITOCControlDefault GetTOCControl()
+        public ITOCControlDefault GetITOCControl()
         {
             ITOCControlDefault tocControl = this.axTOCControl1.Object as ITOCControlDefault;
             return tocControl;
@@ -57,7 +57,9 @@ namespace SeanShen.AOCustomControls
 
         public Guid UID { get { return Guid.Parse("61985D90-DAE9-4F27-AB35-DA515B3BFDE2"); } }
 
-        string ISeanResource.Name { get { return "图层视图"; } }
+        string ISeanResource.Name { get { return "ucTOCDockWindow"; } }
+
+        public string Caption { get { return "图层视图"; } }
 
         public enumResourceType Type { get { return enumResourceType.TocWindow; } }
 

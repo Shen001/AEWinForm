@@ -27,7 +27,7 @@ namespace SeanShen.Framework
         /// <summary>
         /// 应用程序句柄
         /// </summary>
-        int hWnd { get; set; }
+        int hWnd { get; }
         /// <summary>
         /// 当前的command
         /// </summary>
@@ -40,7 +40,7 @@ namespace SeanShen.Framework
         /// 当前数据的workspace
         /// </summary>
         /// <returns></returns>
-        ESRI.ArcGIS.Geodatabase.Workspace Workspace { get; }
+        ESRI.ArcGIS.Geodatabase.IWorkspace Workspace { get; }
         /// <summary>
         /// map对象
         /// </summary>
@@ -53,6 +53,12 @@ namespace SeanShen.Framework
         /// 选择集环境设置
         /// </summary>
         ESRI.ArcGIS.Carto.ISelectionEnvironment SelectionEnvironment { get; set; }
+
+        ISeanCommandManager CommandManager { get; }
+
+        ISeanLayoutManager LayoutManager { get; }
+
+        ISeanContextMenuManager ContextManager { get; }
         #endregion
 
 
@@ -61,17 +67,17 @@ namespace SeanShen.Framework
         /// 得到MapControl
         /// </summary>
         /// <returns></returns>
-        ESRI.ArcGIS.Controls.IMapControlDefault GetMapControl();
+        ESRI.ArcGIS.Controls.IMapControlDefault GetIMapControl();
         /// <summary>
         /// 得到PagelayoutControl
         /// </summary>
         /// <returns></returns>
-        ESRI.ArcGIS.Controls.IPageLayoutControlDefault GetPagelayoutControl();
+        ESRI.ArcGIS.Controls.IPageLayoutControlDefault GetIPagelayoutControl();
         /// <summary>
         /// 获得TOC
         /// </summary>
         /// <returns></returns>
-        ESRI.ArcGIS.Controls.ITOCControlDefault GetTOCControl();
+        ESRI.ArcGIS.Controls.ITOCControlDefault GetITOCControl();
         /// <summary>
         /// 关闭窗体
         /// </summary>

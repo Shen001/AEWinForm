@@ -16,6 +16,7 @@ namespace SeanShen.Framework
         private string m_Name;
         private string m_ClassName;
         private string m_UID;
+        private string m_Bitmap;
 
         public string Name { get { return this.m_Name; } }
 
@@ -29,11 +30,23 @@ namespace SeanShen.Framework
             }
         }
 
-        public ResourceConfigStructure(string name, string uid, string cls)
+        public System.Drawing.Bitmap Bitmap
+        {
+            get
+            {
+                string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"images\UI\small_16x16\",m_Bitmap);
+                System.Drawing.Bitmap bitmap = new System.Drawing.Bitmap(path);
+
+                return bitmap;
+            }
+        }
+
+        public ResourceConfigStructure(string name, string uid, string cls,string bitmap)
         {
             this.m_Name = name;
             this.m_UID = uid;
             this.m_ClassName = cls;
+            this.m_Bitmap = bitmap;
         }
 
         public ISeanResource Create()
