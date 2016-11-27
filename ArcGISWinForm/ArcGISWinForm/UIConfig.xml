@@ -1,8 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ROOT>
   <RESOURCEPOOL>
-    <RESOURCE name="全图" clsid="7EA91BC1-97AA-4A22-B1EC-E0587465D531" class="SeanShen.MapViewCommand.MapFullExtentCommand, SeanShen.MapViewCommand" bitmap="ZoomFullExtent16.png"/>
-    <RESOURCE name="地图漫游" clsid="D55F27D6-B49C-41B6-9DE3-6E060BFC8B76" class="SeanShen.MapViewCommand.MapPanTool,SeanShen.MapViewCommand" bitmap="PanTool16.png"/>
+    <!--地图视图-->
+    <RESOURCE caption="全图" clsid="7EA91BC1-97AA-4A22-B1EC-E0587465D531" class="SeanShen.MapViewCommand.MapFullExtentCommand, SeanShen.MapViewCommand" />
+    <RESOURCE caption="地图漫游" clsid="D55F27D6-B49C-41B6-9DE3-6E060BFC8B76" class="SeanShen.MapViewCommand.MapPanTool,SeanShen.MapViewCommand" />
+    <!--控件-->
+    <RESOURCE caption="图层视图" clsid="61985D90-DAE9-4F27-AB35-DA515B3BFDE2" class="SeanShen.AOCustomControls.ucTOCDockWindow,SeanShen.AOCustomControls" />
+    <RESOURCE caption="地图视图" clsid="44CB876E-4886-417E-8C89-D1855E222D7A" class="SeanShen.AOCustomControls.ucMapView,SeanShen.AOCustomControls" />
+    <!--用户设置-->
+    <RESOURCE caption="加载默认布局" clsid="19F3B18C-F8D8-40A3-9C62-01B42E4D6B20" class="SeanShen.UserSetting.LoadDefaultLayoutCommand,SeanShen.UserSetting" />
+    <RESOURCE caption="加载布局文件" clsid="B95488F8-2779-47FF-960E-91372A60A484" class="SeanShen.UserSetting.LoadLayoutCommand,SeanShen.UserSetting" />
+    <RESOURCE caption="恢复出厂默认布局" clsid="97E19791-C605-4159-839C-E9339F2F7489" class="SeanShen.UserSetting.RestoreDefaultLayoutCommand,SeanShen.UserSetting" />
+    <RESOURCE caption="另存为布局" clsid="62D98E0D-908C-4203-A568-C399072C6410" class="SeanShen.UserSetting.SaveAsCurrentLayoutCommand,SeanShen.UserSetting" />
+
+    <RESOURCE caption="保存为默认布局" clsid="429BC4C8-A698-4847-B263-6AA19F602B3B" class="SeanShen.UserSetting.SaveDefaultLayoutCommand,SeanShen.UserSetting" />
+
+   <RESOURCE caption="设置界面样式" clsid="51BE3B9F-29E0-42F5-9A64-0D9A05CC1A4E" class="SeanShen.UserSetting.SetVisualStyleCommand,SeanShen.UserSetting" />
+
+
 
 
 

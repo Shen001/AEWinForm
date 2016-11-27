@@ -3,20 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SeanShen.MapViewCommand
+namespace SeanShen.UserSetting
 {
-
     using SeanShen.Framework;
-    /// <summary>
-    /// 全图command
-    /// </summary>
-    public class MapFullExtentCommand : SeanBaseCommand
+    public class SetVisualStyleCommand:SeanBaseCommand
     {
         private System.Drawing.Bitmap m_Bitmap;
         /// <summary>
         /// 构造函数设置ui图片
         /// </summary>
-        public MapFullExtentCommand()
+        public SetVisualStyleCommand()
         {
             try
             {
@@ -37,29 +33,27 @@ namespace SeanShen.MapViewCommand
         /// <summary>
         /// 分类
         /// </summary>
-        public override string Category { get { return "地图视图工具"; } }//必须设置分类信息
+        public override string Category { get { return "用户设置"; } }//必须设置分类信息
 
-        public override string Tooltip { get { return "全图"; } }
+        public override string Tooltip { get { return "设置界面样式"; } }
         public override void Run()
         {
             base.Run();
-            ESRI.ArcGIS.SystemUI.ICommand command = new ESRI.ArcGIS.Controls.ControlsMapFullExtentCommandClass();
-
-            command.OnCreate(this.m_MapControl);
-            command.OnClick();
+            this.m_Application.LayoutManager.SetVisualStyle();
         }
         # endregion
 
 
         #region ISeanResource成员
-        public override Guid UID { get { return Guid.Parse("7EA91BC1-97AA-4A22-B1EC-E0587465D531"); } }//抽象成员一定要重实现
+        public override Guid UID { get { return Guid.Parse("51BE3B9F-29E0-42F5-9A64-0D9A05CC1A4E"); } }//抽象成员一定要重实现
 
-        public override string Name { get { return "MapFullExtentCommand"; } }
+        public override string Name { get { return "SetVisualStyleCommand"; } }
 
         public override string Caption
         {
-            get { return "全图"; }
+            get { return "设置界面样式"; }
         }
         #endregion
+
     }
 }

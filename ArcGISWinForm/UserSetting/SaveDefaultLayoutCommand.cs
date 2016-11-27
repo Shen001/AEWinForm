@@ -3,20 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SeanShen.MapViewCommand
+namespace SeanShen.UserSetting
 {
 
+    /*
+    Time: 26/11/2016 10:24  周六
+    Author: shenxin
+    Description: 保存为默认布局
+    Modify:
+ */
     using SeanShen.Framework;
-    /// <summary>
-    /// 全图command
-    /// </summary>
-    public class MapFullExtentCommand : SeanBaseCommand
+    public class SaveDefaultLayoutCommand : SeanBaseCommand
     {
         private System.Drawing.Bitmap m_Bitmap;
         /// <summary>
         /// 构造函数设置ui图片
         /// </summary>
-        public MapFullExtentCommand()
+        public SaveDefaultLayoutCommand()
         {
             try
             {
@@ -37,28 +40,25 @@ namespace SeanShen.MapViewCommand
         /// <summary>
         /// 分类
         /// </summary>
-        public override string Category { get { return "地图视图工具"; } }//必须设置分类信息
+        public override string Category { get { return "用户设置"; } }//必须设置分类信息
 
-        public override string Tooltip { get { return "全图"; } }
+        public override string Tooltip { get { return "将当前布局保存到默认布局"; } }
         public override void Run()
         {
             base.Run();
-            ESRI.ArcGIS.SystemUI.ICommand command = new ESRI.ArcGIS.Controls.ControlsMapFullExtentCommandClass();
-
-            command.OnCreate(this.m_MapControl);
-            command.OnClick();
+            this.m_Application.LayoutManager.SaveAsDefaultLayout();
         }
         # endregion
 
 
         #region ISeanResource成员
-        public override Guid UID { get { return Guid.Parse("7EA91BC1-97AA-4A22-B1EC-E0587465D531"); } }//抽象成员一定要重实现
+        public override Guid UID { get { return Guid.Parse("429BC4C8-A698-4847-B263-6AA19F602B3B"); } }//抽象成员一定要重实现
 
-        public override string Name { get { return "MapFullExtentCommand"; } }
+        public override string Name { get { return "SaveDefaultLayoutCommand"; } }
 
         public override string Caption
         {
-            get { return "全图"; }
+            get { return "保存为默认布局"; }
         }
         #endregion
     }

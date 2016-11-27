@@ -5,7 +5,7 @@ using System.Windows.Forms;
 using ESRI.ArcGIS.esriSystem;
 
 
-namespace ArcGISWinForm
+namespace SeanShen.ArcGISWinForm
 {
     using SeanShen.AEUtilities;
     using System.Threading;

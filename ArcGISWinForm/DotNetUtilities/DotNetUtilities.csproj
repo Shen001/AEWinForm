@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LogHelper.cs" />
     <Compile Include="python\PythonHelper.cs" />
     <Compile Include="python\PythonPath.cs" />
     <Compile Include="RegexHelper.cs" />

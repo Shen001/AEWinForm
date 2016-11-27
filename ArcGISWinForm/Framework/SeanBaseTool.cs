@@ -26,7 +26,7 @@ namespace SeanShen.Framework
         #endregion
         
         # region ISeanCommand
-        public new abstract System.Drawing.Bitmap Bitmap { get; set; }
+        public new abstract System.Drawing.Bitmap Bitmap { get; }
         /// <summary>
         /// 分类
         /// </summary>

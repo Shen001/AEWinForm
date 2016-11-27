@@ -13,7 +13,7 @@ namespace SeanShen.Framework
     */
     public interface ISeanCommand : ISeanResource
     {
-        System.Drawing.Bitmap Bitmap { get; set; }
+        System.Drawing.Bitmap Bitmap { get; }
         /// <summary>
         /// 分类
         /// </summary>

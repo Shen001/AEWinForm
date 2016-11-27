@@ -28,7 +28,7 @@ namespace SeanShen.MapViewCommand
             }
         }
         #region ISeanCommand成员
-        public override System.Drawing.Bitmap Bitmap { get { return this.m_bitmap; } set { this.m_bitmap = value; } }
+        public override System.Drawing.Bitmap Bitmap { get { return this.m_Bitmap; }}
         /// <summary>
         /// 分类
         /// </summary>
@@ -40,7 +40,9 @@ namespace SeanShen.MapViewCommand
         {
             get
             {
-                if (this.m_Application.CurrentCommand == this ||
+                if (this.m_Application.CurrentCommand == null)
+                    return false;
+                if (this.m_Application.CurrentCommand == this &&
     ((ESRI.ArcGIS.SystemUI.ICommand)this.m_MapControl.CurrentTool).Name == "ControlToolsMapNavigation_Pan")
                     return true;
                 else return false;

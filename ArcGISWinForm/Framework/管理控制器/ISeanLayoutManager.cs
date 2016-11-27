@@ -18,17 +18,21 @@ namespace SeanShen.Framework
         /// </summary>
         void LoadDefaultLayout();
         /// <summary>
+        /// 保存至默认布局
+        /// </summary>
+        void SaveAsDefaultLayout();
+        /// <summary>
+        /// 恢复默认布局
+        /// </summary>
+        void RestoreDefaultLayout();
+        /// <summary>
         /// 加载指定布局
         /// </summary>
         void LoadLayout();
         /// <summary>
-        /// 保存当前的布局
-        /// </summary>
-        void SaveCurrentLayout();
-        /// <summary>
         /// 另存为布局
         /// </summary>
-        void SaveAsLayout();
+        void SaveAsCurrentLayout();
         /// <summary>
         /// 设置界面的样式
         /// </summary>

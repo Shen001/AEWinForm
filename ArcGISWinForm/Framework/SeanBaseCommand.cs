@@ -17,7 +17,7 @@ namespace SeanShen.Framework
         protected ESRI.ArcGIS.Controls.IMapControlDefault m_MapControl = null;
 
         #region ISeanCommand成员
-        public abstract System.Drawing.Bitmap Bitmap { get; set; }
+        public abstract System.Drawing.Bitmap Bitmap { get; }
         /// <summary>
         /// 分类
         /// </summary>
