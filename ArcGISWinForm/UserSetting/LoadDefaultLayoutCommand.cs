@@ -9,6 +9,7 @@ namespace SeanShen.UserSetting
     public class LoadDefaultLayoutCommand:SeanBaseCommand
     {
         private System.Drawing.Bitmap m_Bitmap;
+        private DevExpress.XtraBars.BarItem m_BindBarItem;
         /// <summary>
         /// 构造函数设置ui图片
         /// </summary>
@@ -30,6 +31,8 @@ namespace SeanShen.UserSetting
         {
             get { return this.m_Bitmap; }
         }
+
+        public override DevExpress.XtraBars.BarItem BindBarItem { get { return this.m_BindBarItem; } set { this.m_BindBarItem = value; } }
         /// <summary>
         /// 分类
         /// </summary>

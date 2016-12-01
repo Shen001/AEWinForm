@@ -12,6 +12,7 @@ namespace SeanShen.MapViewCommand
     public class MapPanTool : SeanBaseTool
     {
         private System.Drawing.Bitmap m_Bitmap;
+        private DevExpress.XtraBars.BarItem m_BindBarItem;
         /// <summary>
         /// 构造函数设置ui图片
         /// </summary>
@@ -33,21 +34,10 @@ namespace SeanShen.MapViewCommand
         /// 分类
         /// </summary>
         public override string Category { get { return "地图视图工具"; } }//必须设置分类信息
-
+        
         public override string Tooltip { get { return "地图漫游"; } }
 
-        public override bool Checked
-        {
-            get
-            {
-                if (this.m_Application.CurrentCommand == null)
-                    return false;
-                if (this.m_Application.CurrentCommand == this &&
-    ((ESRI.ArcGIS.SystemUI.ICommand)this.m_MapControl.CurrentTool).Name == "ControlToolsMapNavigation_Pan")
-                    return true;
-                else return false;
-            }
-        }
+        public override DevExpress.XtraBars.BarItem BindBarItem { get { return this.m_BindBarItem; } set { this.m_BindBarItem = value; } }
 
         public override void Run()
         {

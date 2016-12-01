@@ -17,10 +17,11 @@ namespace SeanShen.Framework
         protected ESRI.ArcGIS.Controls.IMapControlDefault m_MapControl = null;
 
         #region  Override BaseTool
-
+        //tool工具构建的时候设置checked
         public override void OnCreate(object hook)
         {
-            
+            DevExpress.XtraBars.BarCheckItem checkItem = this.BindBarItem as DevExpress.XtraBars.BarCheckItem;
+            checkItem.Checked = true;
         }
 
         #endregion
@@ -32,25 +33,14 @@ namespace SeanShen.Framework
         /// </summary>
         public abstract override string Category { get; }//必须设置分类信息
 
-        public new virtual bool Enabled { get { return true; } }//如有需要可以修改
+        public abstract DevExpress.XtraBars.BarItem BindBarItem { get; set; }
 
-        public new virtual bool Checked
-        {
-            get
-            {
-                if (this.m_Application.CurrentCommand == this)
-                    return true;
-                return false;
-            }
-        }
+        public new virtual bool Enabled { get { return true; } }//如有需要可以修改
 
         public virtual void Run()
         {
             this.OnCreate(null);
-            if (!this.Checked)
-                this.m_Application.CurrentCommand = this;
-            else
-                this.m_Application.DefaultCommand.Run();//如果当前的command选中状态，那么设置当前的command为默认command
+            this.m_Application.CurrentCommand = this;
         }
         #endregion
 

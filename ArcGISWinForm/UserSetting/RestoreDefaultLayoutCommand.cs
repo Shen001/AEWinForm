@@ -9,6 +9,7 @@ namespace SeanShen.UserSetting
     public class RestoreDefaultLayoutCommand:SeanBaseCommand
     {
         private System.Drawing.Bitmap m_Bitmap;
+        private DevExpress.XtraBars.BarItem m_BindBarItem;
         /// <summary>
         /// 构造函数设置ui图片
         /// </summary>
@@ -34,6 +35,8 @@ namespace SeanShen.UserSetting
         /// 分类
         /// </summary>
         public override string Category { get { return "用户设置"; } }//必须设置分类信息
+
+        public override DevExpress.XtraBars.BarItem BindBarItem { get { return this.m_BindBarItem; } set { this.m_BindBarItem = value; } }
 
         public override string Tooltip { get { return "恢复出厂的默认布局"; } }
         public override void Run()

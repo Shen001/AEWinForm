@@ -20,8 +20,10 @@ namespace SeanShen.Framework
         string Category { get;}
 
         bool Enabled { get; }
-
-        bool Checked { get; }
+        /// <summary>
+        /// 每一个Command对应绑定的baritem
+        /// </summary>
+        DevExpress.XtraBars.BarItem BindBarItem{get;set;}
 
         string Tooltip { get; }
         /// <summary>

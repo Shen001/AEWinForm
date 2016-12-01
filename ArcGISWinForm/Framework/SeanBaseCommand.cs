@@ -25,7 +25,9 @@ namespace SeanShen.Framework
 
         public virtual bool Enabled { get { return true; } }//如有需要可以修改
 
-        public virtual bool Checked { get { return false; } }//command不需要check
+        //public virtual bool Checked { get { return false; } }//command不需要check
+
+        public abstract DevExpress.XtraBars.BarItem BindBarItem { get; set; }
 
         public virtual string Tooltip { get { return null; } }
         public virtual void Run()
@@ -33,7 +35,6 @@ namespace SeanShen.Framework
             this.m_Application.CurrentCommand = this;//设置当前的command
         }
         # endregion
-
 
         #region ISeanResource成员
         public abstract Guid UID { get; }//抽象成员一定要重实现

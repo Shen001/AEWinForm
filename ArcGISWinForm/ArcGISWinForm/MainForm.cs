@@ -13,6 +13,13 @@ using System.Threading;
 
 namespace SeanShen.ArcGISWinForm
 {
+
+    /*************************************************
+     * 作者：沈鑫
+     * 版本号：V1.0
+     * 创建日期：2016年11月29日  13:24:11  Tuesday
+     * 说明：宏命令测试
+     * **************************************************/
     using SeanShen.AEUtilities;
     using SeanShen.CustomControls;
     using DevExpress.XtraBars;
@@ -23,8 +30,11 @@ namespace SeanShen.ArcGISWinForm
     using System.Collections;
     using SeanShen.AOCustomControls;
     using ESRI.ArcGIS.SystemUI;
-using ESRI.ArcGIS.Geodatabase;
-    public partial class MainForm : Form, ISeanApplication, ISeanStatusBar, ISeanLayoutManager, ISeanCommandManager,ISeanContextMenuManager
+    using ESRI.ArcGIS.Geodatabase;
+    using DevExpress.LookAndFeel;
+    using DevExpress.XtraLayout;
+    using DevExpress.XtraEditors;
+    public partial class MainForm : Form, ISeanApplication, ISeanStatusBar, ISeanLayoutManager, ISeanCommandManager, ISeanContextMenuManager
     {
 
         public MainForm()
@@ -32,25 +42,30 @@ using ESRI.ArcGIS.Geodatabase;
             CultureInfo Ci = new CultureInfo("zh-CN");
             Thread.CurrentThread.CurrentCulture = Ci;
             Thread.CurrentThread.CurrentUICulture = Ci;
+
+            InitializeComponent();
             /*登录窗体*/
 
             //初始化对象
-            InitializeComponent();
+
             InitialMainForm();
-            //InitialDevControl();
             InitialResource();
             if (!RegisterResources())
             {
                 //记录
                 return;
             }
-            RegisterResourceInBarItem();
-            CreateDockWindow(); 
-            CreateView();
-            //LoadDefaultLayout();
             AddMenuBar();
+            RegisterResourceInBarItem();
 
+            LoadDefaultLayout();
 
+            CreateDockWindow();
+            CreateView();
+            AddStatusBarItem();
+
+            UserLookAndFeel.Default.UseDefaultLookAndFeel = false;
+            UserLookAndFeel.Default.SetSkinStyle("Office 2013");
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -65,6 +80,10 @@ using ESRI.ArcGIS.Geodatabase;
                 this.mMapControl.Map.Name = "图层";//加载完修改map的名称
                 this.mMapControl.ActiveView.ContentsChanged();//刷新TOC
 
+                this.tocWindow.GetControl().Refresh();
+                this.mapControlView.GetControl().Refresh();
+                //Application.DoEvents();
+
                 this.mDefaultCommand = ((ISeanCommandManager)this).GetCommand("D55F27D6-B49C-41B6-9DE3-6E060BFC8B76");
                 this.mDefaultCommand.Run();
             }
@@ -78,7 +97,7 @@ using ESRI.ArcGIS.Geodatabase;
         {
             if (this.barManager1.AllowCustomization)
             {
-                SaveLayout();//保存当前的布局
+                //SaveAsDefaultLayout();
             }
         }
 
@@ -86,110 +105,8 @@ using ESRI.ArcGIS.Geodatabase;
 
         private DevExpress.XtraBars.BarSubItem newMenu;//该item代表添加到了barmanager里面但是没有添加到界面上的item
 
-        private DevExpress.XtraBars.BarDockControl dockTop;
-        private DevExpress.XtraBars.BarDockControl dockBottom;
-        private DevExpress.XtraBars.BarDockControl dockLeft;
-        private DevExpress.XtraBars.BarDockControl dockRight;
         #endregion
 
-        /// <summary>
-        /// 初始化控件
-        /// </summary>
-        private void InitialDevControl()
-        {
-            this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new ComponentResourceManager(typeof(MainForm));
-
-            this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
-            //this.defaultLookAndFeel=new DevExpress.LookAndFeel.DefaultLookAndFeel (this.components);
-            this.barManager1 = new BarManager(this.components);
-            this.imageList1 = new ImageList(this.components);
-            this.newMenu = new BarSubItem();
-
-            this.dockTop = new BarDockControl();
-            this.dockLeft = new BarDockControl();
-            this.dockBottom = new BarDockControl();
-            this.dockRight = new BarDockControl();
-
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
-
-            this.SuspendLayout();
-
-            this.dockManager1.Form = this;
-            this.dockManager1.MenuManager = this.barManager1;
-            this.dockManager1.TopZIndexControls.AddRange(new string[] {
-            "DevExpress.XtraBars.BarDockControl",
-            "System.Windows.Forms.StatusBar",
-            "DevExpress.XtraBars.Ribbon.RibbonStatusBar",
-            "DevExpress.XtraBars.Ribbon.RibbonControl"
-            });
-
-            this.barManager1.Categories.AddRange(new DevExpress.XtraBars.BarManagerCategory[]{
-            new DevExpress.XtraBars.BarManagerCategory("菜单",new System.Guid("727A147A-51FF-4EBE-BF4A-FC332280BD16"))
-            });
-            this.barManager1.DockControls.Add(this.dockTop);
-            this.barManager1.DockControls.Add(this.dockLeft);
-            this.barManager1.DockControls.Add(this.dockBottom);
-            this.barManager1.DockControls.Add(this.dockRight);
-            this.barManager1.DockManager = this.dockManager1;
-            this.barManager1.Form = this;
-            this.barManager1.Images = this.imageList1;
-            this.barManager1.AllowCustomization = true;
-            this.barManager1.MaxItemId = 704996564;
-         
-
-            //top
-            this.dockTop.CausesValidation = false;
-            this.dockTop.Dock = DockStyle.Top;
-            this.dockTop.Location = new System.Drawing.Point(0, 0);
-            this.dockTop.Size = new System.Drawing.Size(691, 0);
-
-            //bottom
-            this.dockBottom.CausesValidation = false;
-            this.dockBottom.Dock = DockStyle.Bottom;
-            this.dockBottom.Location = new System.Drawing.Point(0, 528);
-            this.dockBottom.Size = new System.Drawing.Size(691, 0);
-
-            //left
-            this.dockLeft.CausesValidation = false;
-            this.dockLeft.Dock = DockStyle.Left;
-            this.dockLeft.Location = new System.Drawing.Point(0, 0);
-            this.dockLeft.Size = new System.Drawing.Size(0, 528);
-
-            //right
-            this.dockRight.CausesValidation = false;
-            this.dockRight.Dock = DockStyle.Right;
-            this.dockRight.Location = new System.Drawing.Point(691, 0);
-            this.dockRight.Size = new System.Drawing.Size(0, 528);
-            //lookandfeel
-            //this.defaultLookAndFeel.LookAndFeel.SkinName = "Office 2010 Black";
-            //imagelist
-            this.imageList1.ColorDepth = ColorDepth.Depth8Bit;
-            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-
-            //newmenu
-            this.newMenu.Caption = "新菜单";
-            this.newMenu.CategoryGuid = Guid.Parse("727A147A-51FF-4EBE-BF4A-FC332280BD16");//菜单目录
-            this.newMenu.Id = -559393299;
-            this.newMenu.Name = "newMenu";
-
-            //MainForm
-            this.Controls.Add(this.dockTop);
-            this.Controls.Add(this.dockBottom);
-            this.Controls.Add(this.dockLeft);
-            this.Controls.Add(this.dockRight);
-
-            this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(600, 480);
-            this.ShowInTaskbar = true;
-            this.Text = "SeanMap";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.FormClosing += new FormClosingEventHandler(MainForm_FormClosing);
-            ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
-        }
         //初始化主窗体属性
         private void InitialMainForm()
         {
@@ -200,10 +117,6 @@ using ESRI.ArcGIS.Geodatabase;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new FormClosingEventHandler(MainForm_FormClosing);
         }
-        //配置文件资源对象集合
-        private List<ResourceConfigStructure> resourceConfigStructure = new List<ResourceConfigStructure>();
-        //实例化command集合
-        private Hashtable resourceHashtable = new Hashtable();
         /// <summary>
         /// 初始化资源池（command）
         /// </summary>
@@ -277,6 +190,11 @@ using ESRI.ArcGIS.Geodatabase;
         }
 
         #region 资源集合与变量
+        //配置文件资源对象集合
+        private List<ResourceConfigStructure> resourceConfigStructure = new List<ResourceConfigStructure>();
+        //实例化command集合
+        private Hashtable resourceHashtable = new Hashtable();
+
         private List<ISeanCommand> commandList = new List<ISeanCommand>();
         private List<ISeanDockWindow> dockWindowList = new List<ISeanDockWindow>();
         private List<ISeanView> viewList = new List<ISeanView>();
@@ -284,6 +202,9 @@ using ESRI.ArcGIS.Geodatabase;
         private ISeanMapControlView mapControlView;
         private ISeanPagelayoutView pagelayoutView;
         private ISeanTocWindow tocWindow;
+
+        BarStaticItem staticItem_Message = null;
+        BarStaticItem staticItem_Coordinate = null;
         #endregion
 
         /// <summary>
@@ -373,6 +294,7 @@ using ESRI.ArcGIS.Geodatabase;
                     barItem.Category = this.barManager1.Categories[command.Category];
                     barItem.Hint = command.Caption;
                     barItem.Tag = command.UID.ToString().ToLower();
+                    command.BindBarItem = barItem;
 
                     this.barManager1.Items.Add(barItem);
                     barItem.ItemClick += new ItemClickEventHandler(barItem_ItemClick);
@@ -387,19 +309,18 @@ using ESRI.ArcGIS.Geodatabase;
             ISeanCommand command = this.resourceHashtable[uid] as ISeanCommand;
             if (command == null)
                 return;
-            foreach (BarItem item in barManager1.Items)//设置所有不check
+
+            if (e.Item is BarCheckItem)
             {
-                if (item is BarCheckItem)
+                foreach (BarItem item in barManager1.Items)//设置所有不check
                 {
-                    ((BarCheckItem)item).Checked = false;
+                    if (item is BarCheckItem)
+                    {
+                        ((BarCheckItem)item).Checked = false;
+                    }
                 }
             }
             command.Run();
-            if (e.Item is BarCheckItem)
-            {
-                BarCheckItem item = e.Item as BarCheckItem;
-                item.Checked = command.Checked;
-            }
         }
         /// <summary>
         /// 将command分类
@@ -447,24 +368,41 @@ using ESRI.ArcGIS.Geodatabase;
             if (this.viewList.Count == 0)
                 return;
             //创建mapview
-            DevExpress.XtraBars.Docking.DockPanel dockPanel = null;
-            for (int i = 0; i < this.dockManager1.Panels.Count; i++)
-            {
-                if (this.mapControlView.Caption == this.dockManager1.Panels[i].Text)
-                    dockPanel = this.dockManager1.Panels[i];
-            }
-            if (dockPanel == null)
-            {
-                dockPanel = this.dockManager1.AddPanel(DevExpress.XtraBars.Docking.DockingStyle.Float);
-                dockPanel.SuspendLayout();
-                dockPanel.Text = this.mapControlView.Caption;
-                dockPanel.ID = Guid.NewGuid();
-            }
+            DevExpress.XtraLayout.LayoutControl layoutcontrol = new DevExpress.XtraLayout.LayoutControl();
+            TabbedControlGroup controlGroup = layoutcontrol.Root.AddTabbedGroup();
+            layoutcontrol.BackColor = Color.White;
+
+            ((System.ComponentModel.ISupportInitialize)(layoutcontrol)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(controlGroup)).BeginInit();
+
+            layoutcontrol.Dock = DockStyle.Fill;
+            controlGroup.Name = "多视图布局";
+
+            LayoutControlGroup mapview_ControlGroup = controlGroup.AddTabPage() as LayoutControlGroup;
+            mapview_ControlGroup.Name = "mapview";
+            mapview_ControlGroup.Text = "地图视图";
+            LayoutControlItem mapItem = mapview_ControlGroup.AddItem();
+            mapItem.Name = "mapview_Item";
+            mapItem.Control = this.mapControlView.GetControl();
+            mapItem.TextVisible = false;//控件默认为true
+
+            LayoutControlGroup pagelayoutview_ControlGroup = controlGroup.AddTabPage() as LayoutControlGroup;
+            pagelayoutview_ControlGroup.Name = "pagelayoutview";
+            pagelayoutview_ControlGroup.Text = "布局视图";
+            LayoutControlItem pagelayoutItem = pagelayoutview_ControlGroup.AddItem();
+            pagelayoutItem.Name = "pagelayoutview_Item";
+            pagelayoutItem.Control = this.pagelayoutView.GetControl();
+            pagelayoutItem.TextVisible = false;
+
+            controlGroup.SelectedTabPage = mapview_ControlGroup;
+
+            this.Controls.Add(layoutcontrol);
+
+            ((System.ComponentModel.ISupportInitialize)layoutcontrol).EndInit();
+            ((System.ComponentModel.ISupportInitialize)controlGroup).EndInit();
+
             this.mMapControl = this.mapControlView.GetIMapControl();
             ((Control)this.mapControlView).Dock = System.Windows.Forms.DockStyle.Fill;
-            dockPanel.ControlContainer.Controls.Add(this.mapControlView.GetControl());
-            dockPanel.ResumeLayout(false);
-
 
             this.tocWindow.GetITOCControl().SetBuddyControl(this.mapControlView.GetIMapControl());
         }
@@ -472,30 +410,33 @@ using ESRI.ArcGIS.Geodatabase;
         /// <summary>
         /// 添加一个菜单栏bar
         /// </summary>
-       private void AddMenuBar()
+        private void AddMenuBar()
         {
             DevExpress.XtraBars.Bar menuBar = new Bar(this.barManager1, "菜单栏");
-            menuBar.LinkAdded += new LinkEventHandler(menuBar_LinkAdded);
             menuBar.DockStyle = BarDockStyle.Top;
             menuBar.OptionsBar.UseWholeRow = true;
             menuBar.OptionsBar.AllowCollapse = false;
-            menuBar.OptionsBar.AllowQuickCustomization=true;//下拉箭头
+            menuBar.OptionsBar.AllowQuickCustomization = true;//下拉箭头
 
             this.barManager1.MainMenu = menuBar;
             this.barManager1.Bars.Add(menuBar);
 
-            for (int i = 0; i < this.barManager1.Categories.Count; i++)
-            {
-                Bar subBar = new Bar(this.barManager1,this.barManager1.Categories[i].Name);
-                subBar.LinkAdded += new LinkEventHandler(menuBar_LinkAdded);
-                subBar.DockStyle = BarDockStyle.Top;
-                subBar.OptionsBar.UseWholeRow = false;
-                subBar.OptionsBar.AllowCollapse = true;
-                subBar.OptionsBar.AllowQuickCustomization = true;
-                subBar.OptionsBar.Reset();
-                subBar.Reset();
-                this.barManager1.Bars.Add(subBar);
-            }
+            this.barManager1.Categories.Add(new BarManagerCategory("菜单", new System.Guid("727A147A-51FF-4EBE-BF4A-FC332280BD16")));
+        }
+
+        /// <summary>
+        /// 状态栏添加项目
+        /// </summary>
+        private void AddStatusBarItem()
+        {
+            staticItem_Message = new BarStaticItem();
+            staticItem_Message.Caption = "";
+
+            staticItem_Coordinate = new BarStaticItem();
+            staticItem_Coordinate.Alignment = BarItemLinkAlignment.Right;
+            staticItem_Coordinate.Caption = "地理坐标";
+
+            this.bar3.AddItems(new BarItem[] { staticItem_Message, staticItem_Coordinate });
         }
 
         int newMenuIndex = 0;
@@ -523,47 +464,6 @@ using ESRI.ArcGIS.Geodatabase;
             }
         }
 
-        //保存布局到配置文件
-        private void SaveLayout()
-        {
-            if (System.IO.File.Exists(Default_LayoutPath))
-            {
-                System.IO.File.Delete(Default_LayoutPath);
-            }
-
-            this.barManager1.SaveLayoutToXml(Default_LayoutPath);
-
-            //System.Xml.XmlDocument xmlDoc = new XmlDocument();
-            //xmlDoc.Load(Default_LayoutPath);
-            //XmlNode nodeMenus = xmlDoc.CreateElement("Menus");
-            //xmlDoc.FirstChild.AppendChild(nodeMenus);
-            //for (int i = 0; i < this.barManager.Items.Count; i++)
-            //{
-            //    BarItem barItem = barManager.Items[i];
-            //    if (barItem is BarSubItem)
-            //    {
-            //        if (barItem == this.newMenu)//如果相等，代表还没有添加到当前的界面视图中去，只是存在barmanager中
-            //            continue;
-            //        XmlNode nodeItem = xmlDoc.CreateElement("Item");
-            //        XmlAttribute attrID = xmlDoc.CreateAttribute("ID");
-            //        XmlAttribute attrName = xmlDoc.CreateAttribute("Name");
-            //        XmlAttribute attrCaption = xmlDoc.CreateAttribute("Caption");
-
-            //        attrID.Value = barItem.Id.ToString();
-            //        attrName.Value = barItem.Name;
-            //        attrCaption.Value = barItem.Caption;
-
-            //        nodeItem.Attributes.Append(attrID);
-            //        nodeItem.Attributes.Append(attrName);
-            //        nodeItem.Attributes.Append(attrCaption);
-
-            //        nodeMenus.AppendChild(nodeItem);
-            //    }
-            //}
-            //xmlDoc.Save(Default_LayoutPath);
-        }
-
-
         #region ISeanContextManager
         public void ShowContextMenu(string groupname)
         { }
@@ -575,8 +475,6 @@ using ESRI.ArcGIS.Geodatabase;
         { }
         #endregion
 
-
-
         #region ISeanStatusBar
 
         private string m_StatusMessage = "准备";
@@ -587,12 +485,14 @@ using ESRI.ArcGIS.Geodatabase;
             {
                 this.m_StatusMessage = value;
                 //设置状态栏显示信息
+                this.staticItem_Message.Caption = this.m_StatusMessage;
             }
         }
 
         public void ShowCoordinate(double x, double y)
         {
-            string coordinateMsg = string.Format("坐标：{0:0.###}，{1:0.###}{2}  比例：{3：0}", x, y, "地图单位", "地图比例");
+            string coordinateMsg = string.Format("坐标：{0:0.###},{1:0.###} {2}           比例：{3:0}     ", x, y, AEUtilities.MapHelper.GetMapUnit(this.mMapControl.MapUnits), this.mMapControl.MapScale);
+            this.staticItem_Coordinate.Caption = coordinateMsg;
         }
 
         public void ShowProgressBar(string Message, int min, int max, int Step)
@@ -626,7 +526,6 @@ using ESRI.ArcGIS.Geodatabase;
         private ISeanCommand mCurrentCommand;
         private IMapControlDefault mMapControl;
         private ISeanCommand mDefaultCommand;
-        private IWorkspace mWorkspace;
         private ISelectionEnvironment mSelectionEnvironment;
 
         public string Caption
@@ -634,7 +533,6 @@ using ESRI.ArcGIS.Geodatabase;
             get { return this.Text; }
             set { this.Text = value; }
         }
-
 
         public int hWnd { get { return this.hWnd; } }
 
@@ -644,20 +542,10 @@ using ESRI.ArcGIS.Geodatabase;
             set
             {
                 this.mCurrentCommand = value;
-                ((ISeanStatusBar)this).Message = this.mCurrentCommand.Name;
-                if (this.mCurrentCommand is ITool)
+                ((ISeanStatusBar)this).Message = this.mCurrentCommand.Caption;
+                if (this.mCurrentCommand is ITool)//必须要，因为不是每一个tool都是调用内置tool
                 {
                     this.mMapControl.CurrentTool = this.mCurrentCommand as ITool;
-                }
-                else
-                {
-                    if (this.mCurrentCommand.Name == "地图漫游" && ((ICommand)this.mMapControl.CurrentTool).Name != "ControlToolsMapNavigation_Pan")
-                    {
-                        ICommand panTool = new ControlsMapPanToolClass();
-                        panTool.OnCreate(this.mMapControl);
-                        this.mMapControl.CurrentTool = panTool as ITool;
-                    }
-
                 }
             }
         }
@@ -669,7 +557,7 @@ using ESRI.ArcGIS.Geodatabase;
 
         public IWorkspace Workspace
         {
-            get { return null; }
+            get { return AEUtilities.WorkspaceHelper.GetCurrentWorkspace(this.Map); }
         }
 
         public IMap Map { get { return this.mMapControl.Map; } }
@@ -688,7 +576,7 @@ using ESRI.ArcGIS.Geodatabase;
                     return mSelectionEnvironment;
                 }
             }
-            set 
+            set
             {
                 this.mSelectionEnvironment = value;
             }
@@ -697,9 +585,10 @@ using ESRI.ArcGIS.Geodatabase;
         public ISeanCommandManager CommandManager { get { return (ISeanCommandManager)this; } }
 
         public ISeanLayoutManager LayoutManager { get { return (ISeanLayoutManager)this; } }
-       
+
         public ISeanContextMenuManager ContextManager { get { return (ISeanContextMenuManager)this; } }
 
+        public ISeanStatusBar StatusBar { get { return (ISeanStatusBar)this; } }
 
 
         public IMapControlDefault GetIMapControl()

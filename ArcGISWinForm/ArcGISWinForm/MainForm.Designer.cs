@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
@@ -52,12 +53,12 @@
             this.barManager1.DockManager = this.dockManager1;
             this.barManager1.Form = this;
             this.barManager1.Images = this.imageList1;
-            this.barManager1.MaxItemId = 1;
+            this.barManager1.MaxItemId = 3;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar3
             // 
-            this.bar3.BarName = "Status bar";
+            this.bar3.BarName = "状态栏";
             this.bar3.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
             this.bar3.DockCol = 0;
             this.bar3.DockRow = 0;
@@ -65,7 +66,7 @@
             this.bar3.OptionsBar.AllowQuickCustomization = false;
             this.bar3.OptionsBar.DrawDragBorder = false;
             this.bar3.OptionsBar.UseWholeRow = true;
-            this.bar3.Text = "Status bar";
+            this.bar3.Text = "状态栏";
             // 
             // barDockControlTop
             // 
@@ -125,6 +126,7 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "MainForm";
             this.Text = "MainForm";
@@ -138,8 +140,6 @@
         #endregion
 
         private DevExpress.XtraBars.BarManager barManager1;
-        //private DevExpress.XtraBars.Bar bar1;
-        //private DevExpress.XtraBars.Bar bar2;
         private DevExpress.XtraBars.Bar bar3;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;

@@ -92,6 +92,7 @@
     <Compile Include="MapHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RGBColorHelper.cs" />
+    <Compile Include="WorkspaceHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DotNetUtilities\DotNetUtilities.csproj">

@@ -99,6 +99,9 @@
     <EmbeddedResource Include="ucMapView.resx">
       <DependentUpon>ucMapView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ucPagelayoutView.resx">
+      <DependentUpon>ucPagelayoutView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ucTOCDockWindow.resx">
       <DependentUpon>ucTOCDockWindow.cs</DependentUpon>
     </EmbeddedResource>

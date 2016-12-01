@@ -4,9 +4,14 @@
     <!--地图视图-->
     <RESOURCE caption="全图" clsid="7EA91BC1-97AA-4A22-B1EC-E0587465D531" class="SeanShen.MapViewCommand.MapFullExtentCommand, SeanShen.MapViewCommand" />
     <RESOURCE caption="地图漫游" clsid="D55F27D6-B49C-41B6-9DE3-6E060BFC8B76" class="SeanShen.MapViewCommand.MapPanTool,SeanShen.MapViewCommand" />
+    <RESOURCE caption="放大视图" clsid="635EF811-4AF6-405B-874B-E3BA5B94125A" class="SeanShen.MapViewCommand.MapZoomInTool,SeanShen.MapViewCommand" />
+    <RESOURCE caption="缩小视图" clsid="81C2707E-DA9D-4343-96B5-607DC5B555FE" class="SeanShen.MapViewCommand.MapZoomOutTool,SeanShen.MapViewCommand" />
+    <RESOURCE caption="前一视图" clsid="0b39e0d9-f807-4b8c-9030-32321fde32be" class="SeanShen.MapViewCommand.ZoomToLastExtentForwardCommand,SeanShen.MapViewCommand" />
+    <RESOURCE caption="后一视图" clsid="39b1c6cf-4cdd-494a-a837-941de10f5599" class="SeanShen.MapViewCommand.ZoomToLastExtentBackCommand,SeanShen.MapViewCommand" />
     <!--控件-->
     <RESOURCE caption="图层视图" clsid="61985D90-DAE9-4F27-AB35-DA515B3BFDE2" class="SeanShen.AOCustomControls.ucTOCDockWindow,SeanShen.AOCustomControls" />
     <RESOURCE caption="地图视图" clsid="44CB876E-4886-417E-8C89-D1855E222D7A" class="SeanShen.AOCustomControls.ucMapView,SeanShen.AOCustomControls" />
+    <RESOURCE caption="布局视图" clsid="90A2966E-9039-4647-8628-2E9780150255" class="SeanShen.AOCustomControls.ucPagelayoutView,SeanShen.AOCustomControls" />
     <!--用户设置-->
     <RESOURCE caption="加载默认布局" clsid="19F3B18C-F8D8-40A3-9C62-01B42E4D6B20" class="SeanShen.UserSetting.LoadDefaultLayoutCommand,SeanShen.UserSetting" />
     <RESOURCE caption="加载布局文件" clsid="B95488F8-2779-47FF-960E-91372A60A484" class="SeanShen.UserSetting.LoadLayoutCommand,SeanShen.UserSetting" />

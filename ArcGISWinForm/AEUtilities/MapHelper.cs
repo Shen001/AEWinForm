@@ -48,6 +48,63 @@ namespace SeanShen.AEUtilities
             pMapDocument.Save(true, true);
             return true;
         }
+        /// <summary>
+        /// 返回当前map的地图单位（中文）
+        /// </summary>
+        /// <param name="unit"></param>
+        /// <returns></returns>
+        public static string GetMapUnit(ESRI.ArcGIS.esriSystem.esriUnits unit)
+        {
+            string mapUnit = "未知";
+            switch (unit)
+            {
+                case ESRI.ArcGIS.esriSystem.esriUnits.esriMillimeters:
+                    mapUnit = "毫米";
+                    break;
+                case ESRI.ArcGIS.esriSystem.esriUnits.esriCentimeters:
+                    mapUnit = "厘米";
+                    break;
+                case ESRI.ArcGIS.esriSystem.esriUnits.esriDecimeters:
+                    mapUnit = "分米";
+                    break;
+                case ESRI.ArcGIS.esriSystem.esriUnits.esriMeters:
+                    mapUnit = "米";
+                    break;
+                case ESRI.ArcGIS.esriSystem.esriUnits.esriDecimalDegrees://WGS1984默认坐标，十进制度 decimal degree=度＋分/60＋秒/3600
+                    mapUnit = "度";
+                    break;
+                case ESRI.ArcGIS.esriSystem.esriUnits.esriFeet:
+                    mapUnit = "英尺";
+                    break;
+                case ESRI.ArcGIS.esriSystem.esriUnits.esriInches:
+                    mapUnit = "英寸";
+                    break;
+                case ESRI.ArcGIS.esriSystem.esriUnits.esriKilometers:
+                    mapUnit = "千米";
+                    break;
+                case ESRI.ArcGIS.esriSystem.esriUnits.esriMiles:
+                    mapUnit = "英里";
+                    break;
+                case ESRI.ArcGIS.esriSystem.esriUnits.esriNauticalMiles:
+                    mapUnit = "海里";
+                    break;
+                case ESRI.ArcGIS.esriSystem.esriUnits.esriPoints:
+                    mapUnit = "点";
+                    break;
+                case ESRI.ArcGIS.esriSystem.esriUnits.esriUnitsLast:
+                    mapUnit = "内部使用";
+                    break;
+                case ESRI.ArcGIS.esriSystem.esriUnits.esriUnknownUnits:
+                    mapUnit = "未知";
+                    break;
+                case ESRI.ArcGIS.esriSystem.esriUnits.esriYards:
+                    mapUnit = "码";
+                    break;
+                default:
+                    break;
+            }
+            return mapUnit;
+        }
         #endregion
     }
 }

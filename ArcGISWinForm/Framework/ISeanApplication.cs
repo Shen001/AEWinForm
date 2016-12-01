@@ -59,6 +59,8 @@ namespace SeanShen.Framework
         ISeanLayoutManager LayoutManager { get; }
 
         ISeanContextMenuManager ContextManager { get; }
+
+        ISeanStatusBar StatusBar { get; }
         #endregion
 
 

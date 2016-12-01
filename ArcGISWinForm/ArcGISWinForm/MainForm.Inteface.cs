@@ -13,7 +13,7 @@ namespace SeanShen.ArcGISWinForm
     Author: shenxin
     Description: 用来实现MainForm需要实现的接口
     Modify:
- */
+*/
     public partial class MainForm
     {        
         #region ISeanLayoutManager
@@ -110,6 +110,7 @@ namespace SeanShen.ArcGISWinForm
         /// </summary>
         private void ResetBar()
         {
+            return;
             //允许对默认的bar进行修改和删除
             foreach (Bar bar in this.barManager1.Bars)
             {
@@ -118,10 +119,9 @@ namespace SeanShen.ArcGISWinForm
                 {
                     UpdateBarItemLinkImage(bar.ItemLinks[i]);
                 }
-                bar.OptionsBar.UseWholeRow = true;
+                bar.OptionsBar.UseWholeRow = false;
                 bar.OptionsBar.AllowRename = true;
                 bar.OptionsBar.AllowDelete = true;
-                bar.LinkAdded += new LinkEventHandler(menuBar_LinkAdded);
                 bar.EndUpdate();
             }
         }
