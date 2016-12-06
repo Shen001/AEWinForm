@@ -8,6 +8,9 @@
     <RESOURCE caption="缩小视图" clsid="81C2707E-DA9D-4343-96B5-607DC5B555FE" class="SeanShen.MapViewCommand.MapZoomOutTool,SeanShen.MapViewCommand" />
     <RESOURCE caption="前一视图" clsid="0b39e0d9-f807-4b8c-9030-32321fde32be" class="SeanShen.MapViewCommand.ZoomToLastExtentForwardCommand,SeanShen.MapViewCommand" />
     <RESOURCE caption="后一视图" clsid="39b1c6cf-4cdd-494a-a837-941de10f5599" class="SeanShen.MapViewCommand.ZoomToLastExtentBackCommand,SeanShen.MapViewCommand" />
+    <RESOURCE caption="地图对象识别" clsid="84242020-cf07-41b3-8a2c-7838c09dd8a7" class="SeanShen.MapViewCommand.MapIdentifyTool,SeanShen.MapViewCommand" />
+    <RESOURCE caption="选择要素" clsid="c51b6efe-c7a4-45e1-bce0-7a12326b808b" class="SeanShen.MapViewCommand.MapSelectFeaturesTool,SeanShen.MapViewCommand" />
+    <RESOURCE caption="清除选择集" clsid="6e70cc04-9f4b-4cb2-ad04-766ed7a2ce67" class="SeanShen.MapViewCommand.ClearSelectionCommand,SeanShen.MapViewCommand" />
     <!--控件-->
     <RESOURCE caption="图层视图" clsid="61985D90-DAE9-4F27-AB35-DA515B3BFDE2" class="SeanShen.AOCustomControls.ucTOCDockWindow,SeanShen.AOCustomControls" />
     <RESOURCE caption="地图视图" clsid="44CB876E-4886-417E-8C89-D1855E222D7A" class="SeanShen.AOCustomControls.ucMapView,SeanShen.AOCustomControls" />
@@ -20,11 +23,9 @@
 
     <RESOURCE caption="保存为默认布局" clsid="429BC4C8-A698-4847-B263-6AA19F602B3B" class="SeanShen.UserSetting.SaveDefaultLayoutCommand,SeanShen.UserSetting" />
 
-   <RESOURCE caption="设置界面样式" clsid="51BE3B9F-29E0-42F5-9A64-0D9A05CC1A4E" class="SeanShen.UserSetting.SetVisualStyleCommand,SeanShen.UserSetting" />
-
-
-
-
+    <RESOURCE caption="设置界面样式" clsid="51BE3B9F-29E0-42F5-9A64-0D9A05CC1A4E" class="SeanShen.UserSetting.SetVisualStyleCommand,SeanShen.UserSetting" />
+    <!--AO文件管理-->
+    <RESOURCE caption="添加数据" clsid="4d293893-1dd1-4875-997f-dbb628f798a9" class="SeanShen.AOFileManageCommand.AddDataCommand,SeanShen.AOFileManageCommand" />
 
 
 

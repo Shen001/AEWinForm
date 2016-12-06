@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Share
+namespace SeanShen.Share
 {
     /*
     Time: 22/11/2016 10:23 AM 周二
@@ -47,5 +47,14 @@ namespace Share
         /// 添加注记事件
         /// </summary>
         public const string EVENT_ADDLABEL = "WxEventAddLabel";
+
+
+        /*****************路径全局静态变量******************/
+        /// <summary>
+        /// 16 x 16大小的图片路径
+        /// </summary>
+        public const string SMALLIMAGE_16 = @"images\UI\small_16x16\";
+
+        public const string LARGEIMAGE_32 = @"images\UI\large_32x32\";
     }
 }

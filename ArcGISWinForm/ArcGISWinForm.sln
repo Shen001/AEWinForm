@@ -25,7 +25,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapViewCommand", "MapViewCo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PagelayoutViewCommand", "PagelayoutViewCommand\PagelayoutViewCommand.csproj", "{7BAED109-B0CB-4069-8EE9-AA592613BC59}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileManageCommand", "FileManageCommand\FileManageCommand.csproj", "{105AAD61-96FE-4973-A03D-1E850CD9B387}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AOFileManageCommand", "AOFileManageCommand\AOFileManageCommand.csproj", "{105AAD61-96FE-4973-A03D-1E850CD9B387}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapEditCommand", "MapEditCommand\MapEditCommand.csproj", "{834DD1E6-5A79-4A81-A79E-CD8ED249974F}"
 EndProject

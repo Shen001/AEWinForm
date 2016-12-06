@@ -53,19 +53,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LoadDefaultLayoutCommand.cs" />
-    <Compile Include="LoadLayoutCommand.cs" />
+    <Compile Include="Command\LoadDefaultLayoutCommand.cs" />
+    <Compile Include="Command\LoadLayoutCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RestoreDefaultLayoutCommand.cs" />
-    <Compile Include="SaveAsCurrentLayoutCommand.cs" />
-    <Compile Include="SaveDefaultLayoutCommand.cs" />
-    <Compile Include="SetVisualStyleCommand.cs" />
+    <Compile Include="Command\RestoreDefaultLayoutCommand.cs" />
+    <Compile Include="Command\SaveAsCurrentLayoutCommand.cs" />
+    <Compile Include="Command\SaveDefaultLayoutCommand.cs" />
+    <Compile Include="Command\SetVisualStyleCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Framework\Framework.csproj">
       <Project>{D4C6E4FE-EED6-4AFD-9889-056A5AF676ED}</Project>
       <Name>Framework</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Share\Share.csproj">
+      <Project>{71289846-E425-4C5D-887A-E8C9CDB6F814}</Project>
+      <Name>Share</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Tool\" />
+    <Folder Include="UIForm\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

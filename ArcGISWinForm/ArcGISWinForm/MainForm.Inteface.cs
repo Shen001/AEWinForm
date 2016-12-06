@@ -4,16 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 using DevExpress.XtraBars;
+using SeanShen.Framework;
+using ESRI.ArcGIS.Controls;
+using ESRI.ArcGIS.Carto;
+using ESRI.ArcGIS.Geodatabase;
+using ESRI.ArcGIS.SystemUI;
 
 namespace SeanShen.ArcGISWinForm
 {
-        
-/*
-    Time: 26/11/2016 12:02  周六
-    Author: shenxin
-    Description: 用来实现MainForm需要实现的接口
-    Modify:
-*/
+    /*************************************************
+     * 作者：沈鑫
+     * 版本号：V1.0
+     * 创建日期：2016年12月1日,星期四  09:34:30  Thursday
+     * 说明：实现主窗体需要实现的接口
+     * **************************************************/
     public partial class MainForm
     {        
         #region ISeanLayoutManager
@@ -29,6 +33,7 @@ namespace SeanShen.ArcGISWinForm
             {
 
                 this.barManager1.SaveLayoutToXml(Default_LayoutPath);
+                System.Windows.Forms.MessageBox.Show("保存成功！");
             }
         }
 
@@ -88,6 +93,154 @@ namespace SeanShen.ArcGISWinForm
         public void SetVisualStyle()
         {
 
+        }
+        #endregion
+
+        #region ISeanContextManager
+        public void ShowContextMenu(string groupname)
+        { }
+
+        public void ShowContextMenu(string groupname, int x, int y)
+        { }
+
+        public void SetUserData(string groupname, object data)
+        { }
+        #endregion
+
+        #region ISeanStatusBar
+
+        private string m_StatusMessage = "准备";
+        public string Message
+        {
+            get { return m_StatusMessage; }
+            set
+            {
+                this.m_StatusMessage = value;
+                //设置状态栏显示信息
+                this.staticItem_Message.Caption = this.m_StatusMessage;
+            }
+        }
+
+        public void ShowCoordinate(double x, double y)
+        {
+            string coordinateMsg = string.Format("坐标：{0:0.###},{1:0.###} {2}           比例：{3:0}     ", x, y, AEUtilities.MapHelper.GetMapUnit(this.mMapControl.MapUnits), this.mMapControl.MapScale);
+            this.staticItem_Coordinate.Caption = coordinateMsg;
+        }
+
+        public void ShowProgressBar(string Message, int min, int max, int Step)
+        { }
+
+        public void HideProgressBar()
+        { }
+
+        public void StepProgressBar()
+        { }
+
+        #endregion
+
+        #region ISeanCommandManager
+
+        public ISeanCommand GetCommand(Guid uid)
+        {
+            string strUid = uid.ToString();
+            return this.GetCommand(strUid);
+        }
+
+        public ISeanCommand GetCommand(string uid)
+        {
+            uid = uid.ToLower();
+            return this.commandList.Find(o => o.UID.ToString() == uid);
+        }
+        #endregion
+
+        #region ISeanApplication
+
+        private ISeanCommand mCurrentCommand;
+        private IMapControlDefault mMapControl;
+        private ISeanCommand mDefaultCommand;
+        private ISelectionEnvironment mSelectionEnvironment;
+
+        public string Caption
+        {
+            get { return this.Text; }
+            set { this.Text = value; }
+        }
+
+        public int hWnd { get { return this.hWnd; } }
+
+        public ISeanCommand CurrentCommand
+        {
+            get { return this.mCurrentCommand; }
+            set
+            {
+                this.mCurrentCommand = value;
+                //((ISeanStatusBar)this).Message = this.mCurrentCommand.Caption;
+                if (this.mCurrentCommand is ITool)//必须要，因为不是每一个tool都是调用内置tool
+                {
+                    this.mMapControl.CurrentTool = this.mCurrentCommand as ITool;
+                }
+            }
+        }
+
+        public ISeanCommand DefaultCommand
+        {
+            get { return this.mDefaultCommand; }
+        }
+
+        public IWorkspace Workspace
+        {
+            get { return AEUtilities.WorkspaceHelper.GetCurrentWorkspace(this.Map); }
+        }
+
+        public IMap Map { get { return this.mMapControl.Map; } }
+
+        public ISeanView CurrentView { get { return this.mapControlView; } }
+
+        public ISelectionEnvironment SelectionEnvironment
+        {
+            get
+            {
+                if (mSelectionEnvironment != null)
+                    return mSelectionEnvironment;
+                else
+                {
+                    mSelectionEnvironment = new SelectionEnvironmentClass();
+                    return mSelectionEnvironment;
+                }
+            }
+            set
+            {
+                this.mSelectionEnvironment = value;
+            }
+        }
+
+        public ISeanCommandManager CommandManager { get { return (ISeanCommandManager)this; } }
+
+        public ISeanLayoutManager LayoutManager { get { return (ISeanLayoutManager)this; } }
+
+        public ISeanContextMenuManager ContextManager { get { return (ISeanContextMenuManager)this; } }
+
+        public ISeanStatusBar StatusBar { get { return (ISeanStatusBar)this; } }
+
+
+        public IMapControlDefault GetIMapControl()
+        {
+            return this.mapControlView.GetIMapControl();
+        }
+
+        public IPageLayoutControlDefault GetIPagelayoutControl()
+        {
+            return this.pagelayoutView.GetIPageLayoutControl();
+        }
+
+        public ITOCControlDefault GetITOCControl()
+        {
+            return this.tocWindow.GetITOCControl();
+        }
+
+        public void ShutDown()
+        {
+            this.Close();
         }
         #endregion
         

@@ -52,8 +52,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Command\ClearSelectionCommand.cs" />
+    <Compile Include="Tool\MapIdentifyTool.cs" />
     <Compile Include="Tool\MapPanTool.cs" />
     <Compile Include="Command\MapFullExtentCommand.cs" />
+    <Compile Include="Tool\MapSelectFeaturesTool.cs" />
     <Compile Include="Tool\MapZoomInTool.cs" />
     <Compile Include="Tool\MapZoomOutTool.cs" />
     <Compile Include="Command\ZoomToLastExtentForwardCommand.cs" />
@@ -64,6 +67,10 @@
     <ProjectReference Include="..\Framework\Framework.csproj">
       <Project>{D4C6E4FE-EED6-4AFD-9889-056A5AF676ED}</Project>
       <Name>Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Share\Share.csproj">
+      <Project>{71289846-E425-4C5D-887A-E8C9CDB6F814}</Project>
+      <Name>Share</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

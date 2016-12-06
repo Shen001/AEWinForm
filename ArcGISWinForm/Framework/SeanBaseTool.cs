@@ -41,6 +41,7 @@ namespace SeanShen.Framework
         {
             this.OnCreate(null);
             this.m_Application.CurrentCommand = this;
+            this.m_Application.StatusBar.Message = this.Caption;
         }
         #endregion
 
