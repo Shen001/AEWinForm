@@ -24,7 +24,7 @@ namespace SeanShen.MapViewCommand
         {
             try
             {
-                string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory,Share.Consts.SMALLIMAGE_16, "SelectFeaturesTool16.png");
+                string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory,Share.Consts.SMALLIMAGE_16, "SelectFeaturesTool.png");
                 this.m_Bitmap = new System.Drawing.Bitmap(path);
             }
             catch

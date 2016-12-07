@@ -25,7 +25,7 @@ namespace SeanShen.MapViewCommand
         {
             try
             {
-                string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"images\UI\small_16x16\GenericBlueLeftArrowLongTail16.png");
+                string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Share.Consts.SMALLIMAGE_16,"ZoomToLastExtentForward.png");
                 this.m_Bitmap = new System.Drawing.Bitmap(path);
             }
             catch

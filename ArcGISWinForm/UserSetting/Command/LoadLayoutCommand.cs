@@ -17,7 +17,7 @@ namespace SeanShen.UserSetting
         {
             try
             {
-                string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"images\UI\small_16x16\ZoomFullExtent16.png");
+                string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Share.Consts.SMALLIMAGE_16,"LoadLayout.png");
                 this.m_Bitmap = new System.Drawing.Bitmap(path);
             }
             catch

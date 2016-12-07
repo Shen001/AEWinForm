@@ -116,6 +116,8 @@ namespace SeanShen.ArcGISWinForm
             this.Text = "SeanMap";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new FormClosingEventHandler(MainForm_FormClosing);
+
+            this.barManager1.Images = this.imageCollection1;
         }
         /// <summary>
         /// 初始化资源池（command）
@@ -274,8 +276,11 @@ namespace SeanShen.ArcGISWinForm
 
                     RegisterCategory(command);
 
-                    this.imageList1.Images.Add(command.UID.ToString(), command.Bitmap);
-                    imageIndex = this.imageList1.Images.Count - 1;
+                    //this.imageList1.Images.Add(command.UID.ToString(), command.Bitmap);
+                    //imageIndex = this.imageList1.Images.Count - 1;
+
+                    this.imageCollection1.Images.Add(command.Bitmap, command.UID.ToString());
+                    imageIndex = this.imageCollection1.Images.Count - 1;
 
                     if (command is SeanBaseTool)//如果是baritem
                     {
@@ -370,7 +375,7 @@ namespace SeanShen.ArcGISWinForm
             //创建mapview
             DevExpress.XtraLayout.LayoutControl layoutcontrol = new DevExpress.XtraLayout.LayoutControl();
             TabbedControlGroup controlGroup = layoutcontrol.Root.AddTabbedGroup();
-            layoutcontrol.BackColor = Color.White;
+            //layoutcontrol.BackColor = Color.White;
 
             ((System.ComponentModel.ISupportInitialize)(layoutcontrol)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(controlGroup)).BeginInit();
@@ -379,6 +384,7 @@ namespace SeanShen.ArcGISWinForm
             controlGroup.Name = "多视图布局";
 
             LayoutControlGroup mapview_ControlGroup = controlGroup.AddTabPage() as LayoutControlGroup;
+            mapview_ControlGroup.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.False;
             mapview_ControlGroup.Name = "mapview";
             mapview_ControlGroup.Text = "地图视图";
             LayoutControlItem mapItem = mapview_ControlGroup.AddItem();
@@ -387,6 +393,7 @@ namespace SeanShen.ArcGISWinForm
             mapItem.TextVisible = false;//控件默认为true
 
             LayoutControlGroup pagelayoutview_ControlGroup = controlGroup.AddTabPage() as LayoutControlGroup;
+            pagelayoutview_ControlGroup.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
             pagelayoutview_ControlGroup.Name = "pagelayoutview";
             pagelayoutview_ControlGroup.Text = "布局视图";
             LayoutControlItem pagelayoutItem = pagelayoutview_ControlGroup.AddItem();

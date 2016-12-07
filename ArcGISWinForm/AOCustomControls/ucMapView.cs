@@ -13,7 +13,7 @@ namespace SeanShen.AOCustomControls
     Time: 22/11/2016 15:49 PM 周二
     Author: shenxin
     Description: 封装mapcontrol控件
-    Modify:
+    Modify:（需要重构identify）
     */
 
     using Framework;
