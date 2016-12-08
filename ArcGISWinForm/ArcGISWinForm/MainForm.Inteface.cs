@@ -57,6 +57,7 @@ namespace SeanShen.ArcGISWinForm
 
                 this.barManager1.RestoreLayoutFromXml(Default_LayoutPath);
             }
+            ResetBar();
         }
         //加载指定布局视图
         public void LoadLayout()
@@ -92,7 +93,7 @@ namespace SeanShen.ArcGISWinForm
         //设置界面样式
         public void SetVisualStyle()
         {
-
+            //需要重构为一个下拉框
         }
         #endregion
 
@@ -245,7 +246,10 @@ namespace SeanShen.ArcGISWinForm
         #endregion
         
         #region 私有方法（只与界面操作有关）
-        //更新baritem关联的图片
+        /// <summary>
+        /// 重置image索引，每次加载布局时必须进行这个操作，否则command对应的图片就会随机分配
+        /// </summary>
+        /// <param name="itemLink"></param>
         private void UpdateBarItemLinkImage(BarItemLink itemLink)
         {
             itemLink.ImageIndex = itemLink.Item.ImageIndex;
@@ -263,7 +267,6 @@ namespace SeanShen.ArcGISWinForm
         /// </summary>
         private void ResetBar()
         {
-            return;
             //允许对默认的bar进行修改和删除
             foreach (Bar bar in this.barManager1.Bars)
             {
@@ -272,9 +275,6 @@ namespace SeanShen.ArcGISWinForm
                 {
                     UpdateBarItemLinkImage(bar.ItemLinks[i]);
                 }
-                bar.OptionsBar.UseWholeRow = false;
-                bar.OptionsBar.AllowRename = true;
-                bar.OptionsBar.AllowDelete = true;
                 bar.EndUpdate();
             }
         }

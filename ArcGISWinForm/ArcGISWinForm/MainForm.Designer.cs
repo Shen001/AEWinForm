@@ -73,28 +73,28 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(890, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(266, 0);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 515);
-            this.barDockControlBottom.Size = new System.Drawing.Size(890, 23);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 130);
+            this.barDockControlBottom.Size = new System.Drawing.Size(266, 23);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 515);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 130);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(890, 0);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 515);
+            this.barDockControlRight.Location = new System.Drawing.Point(266, 0);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 130);
             // 
             // dockManager1
             // 
@@ -119,7 +119,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(890, 538);
+            this.ClientSize = new System.Drawing.Size(266, 153);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);

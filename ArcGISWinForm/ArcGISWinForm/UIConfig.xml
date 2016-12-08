@@ -26,17 +26,14 @@
     <RESOURCE caption="设置界面样式" clsid="51BE3B9F-29E0-42F5-9A64-0D9A05CC1A4E" class="SeanShen.UserSetting.SetVisualStyleCommand,SeanShen.UserSetting" />
     <!--AO文件管理-->
     <RESOURCE caption="添加数据" clsid="4d293893-1dd1-4875-997f-dbb628f798a9" class="SeanShen.AOFileManageCommand.AddDataCommand,SeanShen.AOFileManageCommand" />
-
-
-
-    <!-- old config -->
-    <!--<RESOURCE name="全图" clsid="F6A332AD-BAB2-70F3-AC81-8ABF02D969E8" class="SH3H.WGS.AE.PlugIn.WxZoomFullExtentCmd, SH3H.WGS.AE.PlugIn" />
-    <RESOURCE name="拉框放大" clsid="092B7CBC-69C9-3E50-3130-0490B846852C" class="SH3H.WGS.AE.PlugIn.WxZoomInToolCmd, SH3H.WGS.AE.PlugIn" />
-    <RESOURCE name="拉框缩小" clsid="a90b2b6b-4fad-37a8-c4de-8103ee06459f" class="SH3H.WGS.AE.PlugIn.WxZoomOutToolCmd, SH3H.WGS.AE.PlugIn" />
-    <RESOURCE name="移动" clsid="bc9c15e6-4abd-c2b7-e48d-3218e2d23d89" class="SH3H.WGS.AE.PlugIn.WxMapPanCmd, SH3H.WGS.AE.PlugIn" />
-    <RESOURCE name="前视图" clsid="511a2189-ca85-f01e-cd35-fe68be0044ee" class="SH3H.WGS.AE.PlugIn.WxMapLastExtentCmd, SH3H.WGS.AE.PlugIn" />
-    <RESOURCE name="后视图" clsid="8f261fef-8a78-0fc0-5e5b-49409b8fae9a" class="SH3H.WGS.AE.PlugIn.WxMapNextExtentCmd, SH3H.WGS.AE.PlugIn" />
-    <RESOURCE name="添加数据" clsid="9c886221-8125-94c2-4f84-e67d5de8748c" class="SH3H.WGS.AE.PlugIn.WxMapAddDataCmd, SH3H.WGS.AE.PlugIn" />
-    <RESOURCE name="地图查询" clsid="33f9f4fa-7e98-63e6-c771-4c0c5c28185c" class="SH3H.WGS.AE.PlugIn.WxMapIdentifyToolCmd, SH3H.WGS.AE.PlugIn" />-->
+    <RESOURCE caption="另存为文档" clsid="f2f713e9-d6e5-4f62-85eb-86df25e5749a" class="SeanShen.AOFileManageCommand.SaveAsDocCommand,SeanShen.AOFileManageCommand" />
+    
+    
+    
+    
+    
+    
+    
+    
   </RESOURCEPOOL>
 </ROOT>

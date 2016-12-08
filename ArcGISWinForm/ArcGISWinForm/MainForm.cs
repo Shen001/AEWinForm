@@ -276,11 +276,11 @@ namespace SeanShen.ArcGISWinForm
 
                     RegisterCategory(command);
 
-                    //this.imageList1.Images.Add(command.UID.ToString(), command.Bitmap);
-                    //imageIndex = this.imageList1.Images.Count - 1;
-
-                    this.imageCollection1.Images.Add(command.Bitmap, command.UID.ToString());
-                    imageIndex = this.imageCollection1.Images.Count - 1;
+                    if (command.Bitmap != null)
+                    {
+                        this.imageCollection1.Images.Add(command.Bitmap, command.UID.ToString());
+                        imageIndex = this.imageCollection1.Images.Count - 1;
+                    }
 
                     if (command is SeanBaseTool)//如果是baritem
                     {
