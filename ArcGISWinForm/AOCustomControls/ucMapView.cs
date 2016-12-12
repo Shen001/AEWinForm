@@ -72,6 +72,11 @@ namespace SeanShen.AOCustomControls
             IMapControlDefault mapcontrol = this.axMapControl1.Object as IMapControlDefault;
             return mapcontrol;
         }
+
+        public ESRI.ArcGIS.Controls.AxMapControl GetAxMapControl()
+        {
+            return this.axMapControl1;
+        }
         #endregion
 
         # region ISeanView成员

@@ -25,9 +25,9 @@ namespace SeanShen.Framework
         /// </summary>
         string Name { get; }
         /// <summary>
-        /// 应用程序句柄
+        /// 主窗体
         /// </summary>
-        int hWnd { get; }
+        System.Windows.Forms.Form CurrentMainForm { get; }
         /// <summary>
         /// 当前的command
         /// </summary>
@@ -66,17 +66,22 @@ namespace SeanShen.Framework
 
         #region 方法
         /// <summary>
-        /// 得到MapControl
+        /// 得到IMapControlDefault
         /// </summary>
         /// <returns></returns>
         ESRI.ArcGIS.Controls.IMapControlDefault GetIMapControl();
         /// <summary>
-        /// 得到PagelayoutControl
+        /// 得到AxMapControl
+        /// </summary>
+        /// <returns></returns>
+        ESRI.ArcGIS.Controls.AxMapControl GetAxMapControl();
+        /// <summary>
+        /// 得到IPagelayoutControl
         /// </summary>
         /// <returns></returns>
         ESRI.ArcGIS.Controls.IPageLayoutControlDefault GetIPagelayoutControl();
         /// <summary>
-        /// 获得TOC
+        /// 获得ITOCControl
         /// </summary>
         /// <returns></returns>
         ESRI.ArcGIS.Controls.ITOCControlDefault GetITOCControl();

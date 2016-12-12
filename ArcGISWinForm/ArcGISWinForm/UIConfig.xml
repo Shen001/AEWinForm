@@ -9,6 +9,7 @@
     <RESOURCE caption="前一视图" clsid="0b39e0d9-f807-4b8c-9030-32321fde32be" class="SeanShen.MapViewCommand.ZoomToLastExtentForwardCommand,SeanShen.MapViewCommand" />
     <RESOURCE caption="后一视图" clsid="39b1c6cf-4cdd-494a-a837-941de10f5599" class="SeanShen.MapViewCommand.ZoomToLastExtentBackCommand,SeanShen.MapViewCommand" />
     <RESOURCE caption="地图对象识别" clsid="84242020-cf07-41b3-8a2c-7838c09dd8a7" class="SeanShen.MapViewCommand.MapIdentifyTool,SeanShen.MapViewCommand" />
+    <RESOURCE caption="自定义地图对象识别" clsid="0ea03a1c-e133-4843-bd34-29cae93cf4da" class="SeanShen.MapViewCommand.MapCustomIdentifyTool,SeanShen.MapViewCommand" />
     <RESOURCE caption="选择要素" clsid="c51b6efe-c7a4-45e1-bce0-7a12326b808b" class="SeanShen.MapViewCommand.MapSelectFeaturesTool,SeanShen.MapViewCommand" />
     <RESOURCE caption="清除选择集" clsid="6e70cc04-9f4b-4cb2-ad04-766ed7a2ce67" class="SeanShen.MapViewCommand.ClearSelectionCommand,SeanShen.MapViewCommand" />
     <!--控件-->

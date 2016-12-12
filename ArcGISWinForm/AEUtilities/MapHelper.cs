@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.Carto;
+using ESRI.ArcGIS.Display;
+using ESRI.ArcGIS.esriSystem;
+using ESRI.ArcGIS.Geometry;
 
 namespace SeanShen.AEUtilities
 {
@@ -104,6 +107,44 @@ namespace SeanShen.AEUtilities
                     break;
             }
             return mapUnit;
+        }
+        #endregion
+
+        #region Tansform
+
+        /// <summary>
+        /// 屏幕距离转换为地图距离
+        /// </summary>
+        /// <param name="pScreenDisplay"></param>
+        /// <param name="pixel"></param>
+        /// <returns></returns>
+        public static double ConvertPixelToMapUnit(IMap pMap, int pixel)
+        {
+            IActiveView pActiveView = pMap as IActiveView;
+            if (pActiveView == null) return 0;
+
+            return ConvertPixelToMapUnit(pActiveView.ScreenDisplay, pixel);
+        }
+
+        /// <summary>
+        /// 屏幕距离转换为地图距离
+        /// </summary>
+        /// <param name="pScreenDisplay"></param>
+        /// <param name="pixel"></param>
+        /// <returns></returns>
+        public static double ConvertPixelToMapUnit(IScreenDisplay pScreenDisplay, int pixel)
+        {
+            if (pScreenDisplay == null) return 0;
+
+            IDisplayTransformation pDisplayTransformation = pScreenDisplay.DisplayTransformation;
+
+            tagRECT rectDevice = pDisplayTransformation.get_DeviceFrame();
+            IEnvelope pMapBoundary = pDisplayTransformation.VisibleBounds;
+
+            int nDeviceWidth = rectDevice.right - rectDevice.left;
+            double dMapWidth = pMapBoundary.Width;
+
+            return pixel * (dMapWidth / nDeviceWidth);
         }
         #endregion
     }

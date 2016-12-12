@@ -167,7 +167,7 @@ namespace SeanShen.ArcGISWinForm
             set { this.Text = value; }
         }
 
-        public int hWnd { get { return this.hWnd; } }
+        public System.Windows.Forms.Form CurrentMainForm { get { return this; } }
 
         public ISeanCommand CurrentCommand
         {
@@ -228,6 +228,12 @@ namespace SeanShen.ArcGISWinForm
         {
             return this.mapControlView.GetIMapControl();
         }
+
+        public ESRI.ArcGIS.Controls.AxMapControl GetAxMapControl()
+        {
+            return this.mapControlView.GetAxMapControl();
+        }
+
 
         public IPageLayoutControlDefault GetIPagelayoutControl()
         {
