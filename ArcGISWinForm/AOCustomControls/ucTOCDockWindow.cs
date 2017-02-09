@@ -33,6 +33,10 @@ namespace SeanShen.AOCustomControls
             return tocControl;
         }
 
+        public AxTOCControl GetAxTOCControl()
+        {
+            return this.axTOCControl1;
+        }
         #endregion
 
         #region IDockWindow

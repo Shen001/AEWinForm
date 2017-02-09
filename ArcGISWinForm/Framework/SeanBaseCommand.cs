@@ -15,6 +15,7 @@ namespace SeanShen.Framework
     {
         protected ISeanApplication m_Application = null;//保护成员继承给子类
         protected ESRI.ArcGIS.Controls.IMapControlDefault m_MapControl = null;
+        protected ESRI.ArcGIS.Controls.IPageLayoutControlDefault m_PageLayoutControl = null;
 
         #region ISeanCommand成员
         public abstract System.Drawing.Bitmap Bitmap { get; }
@@ -30,6 +31,7 @@ namespace SeanShen.Framework
         public abstract DevExpress.XtraBars.BarItem BindBarItem { get; set; }
 
         public virtual string Tooltip { get { return null; } }
+
         public virtual void Run()
         {
             this.m_Application.CurrentCommand = this;//设置当前的command
@@ -54,6 +56,7 @@ namespace SeanShen.Framework
                 return;
             this.m_Application = application;
             this.m_MapControl = application.GetIMapControl();
+            this.m_PageLayoutControl = application.GetIPagelayoutControl();
         }
         #endregion
     }

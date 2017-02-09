@@ -28,6 +28,13 @@ namespace SeanShen.AOCustomControls
         {
             InitializeComponent();
             this.axPageLayoutControl1.Dock = DockStyle.Fill;
+
+            this.axPageLayoutControl1.OnMouseMove += new IPageLayoutControlEvents_Ax_OnMouseMoveEventHandler(axPageLayoutControl1_OnMouseMove);
+        }
+
+        void axPageLayoutControl1_OnMouseMove(object sender, IPageLayoutControlEvents_OnMouseMoveEvent e)
+        {
+            this.mApplication.StatusBar.ShowPagelayoutCoordinate(e.pageX, e.pageY);
         }
 
         #region ISeanPagelayoutView成员
@@ -35,6 +42,11 @@ namespace SeanShen.AOCustomControls
         {
             IPageLayoutControlDefault pagelayout = this.axPageLayoutControl1.Object as IPageLayoutControlDefault;
             return pagelayout;
+        }
+
+        public ESRI.ArcGIS.Controls.AxPageLayoutControl GetAxPagelayouControl()
+        {
+            return this.axPageLayoutControl1;
         }
         #endregion
 

@@ -12,10 +12,12 @@
     <RESOURCE caption="自定义地图对象识别" clsid="0ea03a1c-e133-4843-bd34-29cae93cf4da" class="SeanShen.MapViewCommand.MapCustomIdentifyTool,SeanShen.MapViewCommand" />
     <RESOURCE caption="选择要素" clsid="c51b6efe-c7a4-45e1-bce0-7a12326b808b" class="SeanShen.MapViewCommand.MapSelectFeaturesTool,SeanShen.MapViewCommand" />
     <RESOURCE caption="清除选择集" clsid="6e70cc04-9f4b-4cb2-ad04-766ed7a2ce67" class="SeanShen.MapViewCommand.ClearSelectionCommand,SeanShen.MapViewCommand" />
+    
     <!--控件-->
     <RESOURCE caption="图层视图" clsid="61985D90-DAE9-4F27-AB35-DA515B3BFDE2" class="SeanShen.AOCustomControls.ucTOCDockWindow,SeanShen.AOCustomControls" />
     <RESOURCE caption="地图视图" clsid="44CB876E-4886-417E-8C89-D1855E222D7A" class="SeanShen.AOCustomControls.ucMapView,SeanShen.AOCustomControls" />
     <RESOURCE caption="布局视图" clsid="90A2966E-9039-4647-8628-2E9780150255" class="SeanShen.AOCustomControls.ucPagelayoutView,SeanShen.AOCustomControls" />
+    
     <!--用户设置-->
     <RESOURCE caption="加载默认布局" clsid="19F3B18C-F8D8-40A3-9C62-01B42E4D6B20" class="SeanShen.UserSetting.LoadDefaultLayoutCommand,SeanShen.UserSetting" />
     <RESOURCE caption="加载布局文件" clsid="B95488F8-2779-47FF-960E-91372A60A484" class="SeanShen.UserSetting.LoadLayoutCommand,SeanShen.UserSetting" />
@@ -25,16 +27,15 @@
     <RESOURCE caption="保存为默认布局" clsid="429BC4C8-A698-4847-B263-6AA19F602B3B" class="SeanShen.UserSetting.SaveDefaultLayoutCommand,SeanShen.UserSetting" />
 
     <RESOURCE caption="设置界面样式" clsid="51BE3B9F-29E0-42F5-9A64-0D9A05CC1A4E" class="SeanShen.UserSetting.SetVisualStyleCommand,SeanShen.UserSetting" />
+    
     <!--AO文件管理-->
     <RESOURCE caption="添加数据" clsid="4d293893-1dd1-4875-997f-dbb628f798a9" class="SeanShen.AOFileManageCommand.AddDataCommand,SeanShen.AOFileManageCommand" />
-    <RESOURCE caption="另存为文档" clsid="f2f713e9-d6e5-4f62-85eb-86df25e5749a" class="SeanShen.AOFileManageCommand.SaveAsDocCommand,SeanShen.AOFileManageCommand" />
+    <RESOURCE caption="另存为文档" clsid="f2f713e9-d6e5-4f62-85eb-86df25e5749a" class="SeanShen.AOFileManageCommand.SaveAsDocumentCommand,SeanShen.AOFileManageCommand" />
+    <RESOURCE caption="打开MXD" clsid="b12f6c09-6003-42d5-a388-08a03a5929c1" class="SeanShen.AOFileManageCommand.OpenNewMapDocumentCommand,SeanShen.AOFileManageCommand" />
+    <RESOURCE caption="保存MXD" clsid="36d528ef-c149-41d5-8193-163e2bca6c50" class="SeanShen.AOFileManageCommand.SaveMapDocumentCommand,SeanShen.AOFileManageCommand" />
+    <RESOURCE caption="新建MXD" clsid="d5cc7d89-a3ff-43cf-82a2-d2af68ff0d25" class="SeanShen.AOFileManageCommand.CreateNewMapDocumentCommand,SeanShen.AOFileManageCommand" />
     
     
-    
-    
-    
-    
-    
-    
+
   </RESOURCEPOOL>
 </ROOT>

@@ -9,7 +9,8 @@ using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.SystemUI;
-
+using System.Windows.Forms;
+using SeanShen.Framework;
 namespace SeanShen.ArcGISWinForm
 {
     /*************************************************
@@ -19,12 +20,12 @@ namespace SeanShen.ArcGISWinForm
      * 说明：实现主窗体需要实现的接口
      * **************************************************/
     public partial class MainForm
-    {        
+    {
         #region ISeanLayoutManager
         //可以自定义的默认布局
         private string Default_LayoutPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"layout\DefaultLayout.xml");
         //出厂设置的默认布局
-        private string Restore_Default_LayoutPath=System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory+@"layout\RestoreDefaultLayout.xml");
+        private string Restore_Default_LayoutPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"layout\RestoreDefaultLayout.xml");
 
         //保存为当前的默认布局——程序初始化时自动加载默认布局
         public void SaveAsDefaultLayout()
@@ -67,7 +68,7 @@ namespace SeanShen.ArcGISWinForm
             openFile.Filter = "XML文件(*.xml)|*.xml";
             openFile.FilterIndex = 2;
             openFile.RestoreDirectory = true;
-            openFile.Multiselect=false;
+            openFile.Multiselect = false;
             openFile.DefaultExt = "*.xml";
             openFile.Title = "加载布局";
             if (openFile.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -111,6 +112,7 @@ namespace SeanShen.ArcGISWinForm
         #region ISeanStatusBar
 
         private string m_StatusMessage = "准备";
+
         public string Message
         {
             get { return m_StatusMessage; }
@@ -122,9 +124,15 @@ namespace SeanShen.ArcGISWinForm
             }
         }
 
-        public void ShowCoordinate(double x, double y)
+        public void ShowMapCoordinate(double x, double y)
         {
             string coordinateMsg = string.Format("坐标：{0:0.###},{1:0.###} {2}           比例：{3:0}     ", x, y, AEUtilities.MapHelper.GetMapUnit(this.mMapControl.MapUnits), this.mMapControl.MapScale);
+            this.staticItem_Coordinate.Caption = coordinateMsg;
+        }
+
+        public void ShowPagelayoutCoordinate(double x, double y)
+        {
+            string coordinateMsg = string.Format("坐标： {0} {1} {2}", x.ToString("###.##"), y.ToString("###.##"), this.mPageLayoutControl.Page.Units.ToString().Substring(4));
             this.staticItem_Coordinate.Caption = coordinateMsg;
         }
 
@@ -158,8 +166,22 @@ namespace SeanShen.ArcGISWinForm
 
         private ISeanCommand mCurrentCommand;
         private IMapControlDefault mMapControl;
+        private IPageLayoutControlDefault mPageLayoutControl;
         private ISeanCommand mDefaultCommand;
         private ISelectionEnvironment mSelectionEnvironment;
+        private ISeanView mCurrentView;
+        //private ControlsSynchronizer mControlSynchronizer;
+        private string mDocumentFileName;
+
+        public string DocumentFileName
+        {
+            get { return mDocumentFileName; }
+            set { mDocumentFileName = value; }
+        }
+        ////直接在初始化同步器
+        //public ControlsSynchronizer Synchronizer { get {
+        //    return mControlSynchronizer;
+        //} }
 
         public string Caption
         {
@@ -178,7 +200,14 @@ namespace SeanShen.ArcGISWinForm
                 //((ISeanStatusBar)this).Message = this.mCurrentCommand.Caption;
                 if (this.mCurrentCommand is ITool)//必须要，因为不是每一个tool都是调用内置tool
                 {
-                    this.mMapControl.CurrentTool = this.mCurrentCommand as ITool;
+                    if (this.CurrentView is ISeanMapControlView)//如果是mapcontrol
+                    {
+                        this.mMapControl.CurrentTool = this.mCurrentCommand as ITool;
+                    }
+                    else if (this.CurrentView is ISeanPagelayoutView)
+                    {
+                        this.mPageLayoutControl.CurrentTool = this.mCurrentCommand as ITool;
+                    }
                 }
             }
         }
@@ -195,7 +224,9 @@ namespace SeanShen.ArcGISWinForm
 
         public IMap Map { get { return this.mMapControl.Map; } }
 
-        public ISeanView CurrentView { get { return this.mapControlView; } }
+        public IPageLayout PageLayout { get { return this.mPageLayoutControl.PageLayout; } }
+
+        public ISeanView CurrentView { get { return this.mCurrentView; } set { this.mCurrentView = value; } }
 
         public ISelectionEnvironment SelectionEnvironment
         {
@@ -234,10 +265,14 @@ namespace SeanShen.ArcGISWinForm
             return this.mapControlView.GetAxMapControl();
         }
 
-
         public IPageLayoutControlDefault GetIPagelayoutControl()
         {
-            return this.pagelayoutView.GetIPageLayoutControl();
+            return this.pageLayoutControlView.GetIPageLayoutControl();
+        }
+
+        public ESRI.ArcGIS.Controls.AxPageLayoutControl GetAxPagelayoutControl()
+        {
+            return this.pageLayoutControlView.GetAxPagelayouControl();
         }
 
         public ITOCControlDefault GetITOCControl()
@@ -245,12 +280,17 @@ namespace SeanShen.ArcGISWinForm
             return this.tocWindow.GetITOCControl();
         }
 
+        public ESRI.ArcGIS.Controls.AxTOCControl GetAxTOCControl()
+        {
+            return this.tocWindow.GetAxTOCControl();
+        }
+
         public void ShutDown()
         {
-            this.Close();
+            Application.Exit();
         }
         #endregion
-        
+
         #region 私有方法（只与界面操作有关）
         /// <summary>
         /// 重置image索引，每次加载布局时必须进行这个操作，否则command对应的图片就会随机分配

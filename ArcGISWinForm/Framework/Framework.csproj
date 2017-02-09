@@ -46,7 +46,15 @@
     <Reference Include="ESRI.ArcGIS.Controls, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="ESRI.ArcGIS.Display, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
     <Reference Include="ESRI.ArcGIS.Geodatabase, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.System, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
@@ -67,6 +75,8 @@
   <ItemGroup>
     <Compile Include="enum\enumResourceType.cs" />
     <Compile Include="ResourceConfigStructure.cs" />
+    <Compile Include="功能接口\ControlsSynchronizer.cs" />
+    <Compile Include="功能接口\Maps.cs" />
     <Compile Include="管理控制器\IMXDManager.cs" />
     <Compile Include="功能接口\视图\ISeanMapControlView.cs" />
     <Compile Include="功能接口\视图\ISeanDockWindow.cs" />

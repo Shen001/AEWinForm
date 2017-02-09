@@ -18,11 +18,17 @@ namespace SeanShen.Framework
         /// </summary>
         string Message { get; set; }
         /// <summary>
-        /// 显示当前坐标
+        /// 显示地图当前坐标
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
-        void ShowCoordinate(double x, double y);
+        void ShowMapCoordinate(double x, double y);
+        /// <summary>
+        /// 显示布局视图坐标
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        void ShowPagelayoutCoordinate(double x, double y);
 
         void ShowProgressBar(string Message, int min, int max, int Step);
 

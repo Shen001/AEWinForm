@@ -13,14 +13,16 @@ namespace SeanShen.AOFileManageCommand
     ** GUID:  f2f713e9-d6e5-4f62-85eb-86df25e5749a
     ** 描述： 另存为文档
     *******************************/
-    public class SaveAsDocCommand:SeanShen.Framework.SeanBaseCommand
+    using System.Windows.Forms;
+    using ESRI.ArcGIS.Carto;
+    public class SaveAsDocumentCommand:SeanShen.Framework.SeanBaseCommand
     {
         private System.Drawing.Bitmap m_Bitmap;
         private DevExpress.XtraBars.BarItem m_BindBarItem;
         /// <summary>
         /// 构造函数设置ui图片
         /// </summary>
-        public SaveAsDocCommand()
+        public SaveAsDocumentCommand()
         {
             try
             {
@@ -50,17 +52,39 @@ namespace SeanShen.AOFileManageCommand
         public override void Run()
         {
             base.Run();
-            ESRI.ArcGIS.SystemUI.ICommand command = new ESRI.ArcGIS.Controls.ControlsSaveAsDocCommand();
-            command.OnCreate(this.m_MapControl);
-            command.OnClick();
+            SaveAsDoc();
+
+            //ESRI.ArcGIS.SystemUI.ICommand command = new ESRI.ArcGIS.Controls.ControlsSaveAsDocCommand();
+            //command.OnCreate(this.m_MapControl);
+            //command.OnClick();
         }
         # endregion
 
+        private void SaveAsDoc()
+        {
+            SaveFileDialog saveDialog = new SaveFileDialog();
+            saveDialog.DefaultExt = ".mxd";
+            saveDialog.Filter = "地图文档(*.mxd)|*.mxd";
+            saveDialog.OverwritePrompt = true;
+            saveDialog.RestoreDirectory = true;
+            saveDialog.Title = "另存为文档";
+            if (saveDialog.ShowDialog() == DialogResult.OK)
+            {
+                IMapDocument mapDocument = new MapDocument();
+                mapDocument.Open(m_Application.DocumentFileName);
+
+                IMxdContents contents = m_MapControl.Map as IMxdContents;
+                mapDocument.ReplaceContents(contents);
+                mapDocument.SaveAs(saveDialog.FileName, true, false);
+
+                mapDocument.Close();
+            }
+        }
 
         #region ISeanResource成员
         public override Guid UID { get { return Guid.Parse("f2f713e9-d6e5-4f62-85eb-86df25e5749a"); } }//抽象成员一定要重实现
 
-        public override string Name { get { return "SaveAsDocCommand"; } }
+        public override string Name { get { return "SaveAsDocumentCommand"; } }
 
         public override string Caption
         {

@@ -11,7 +11,7 @@ namespace SeanShen.AOFileManageCommand
     ** 版本:  V1.0.0
     ** CLR:	  4.0.30319.18408	
     ** GUID:  4d293893-1dd1-4875-997f-dbb628f798a9
-    ** 描述： 添加数据ControlsAddDataCommand
+    ** 描述： 添加数据ControlsAddDataCommand（使用内置command）
     *******************************/
     public class AddDataCommand:SeanShen.Framework.SeanBaseCommand
     {

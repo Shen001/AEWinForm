@@ -46,14 +46,27 @@ namespace SeanShen.Framework
         /// </summary>
         ESRI.ArcGIS.Carto.IMap Map { get; }
         /// <summary>
+        /// 当前的Pagelayout
+        /// </summary>
+        ESRI.ArcGIS.Carto.IPageLayout PageLayout { get; }
+        /// <summary>
         /// 当前展示的view，mapcontrol或者是pagelayoutcontrol
         /// </summary>
-        ISeanView CurrentView { get; }
+        ISeanView CurrentView { get; set; }
         /// <summary>
         /// 选择集环境设置
         /// </summary>
         ESRI.ArcGIS.Carto.ISelectionEnvironment SelectionEnvironment { get; set; }
+        /// <summary>
+        /// mapcontrol和pagelayoutcontrol同步器
+        /// </summary>
+        //ControlsSynchronizer Synchronizer { get; }
+        /// <summary>
+        /// 当前打开mxd文档路径
+        /// </summary>
+        string DocumentFileName { get; set; }
 
+        //管理器
         ISeanCommandManager CommandManager { get; }
 
         ISeanLayoutManager LayoutManager { get; }
@@ -81,10 +94,20 @@ namespace SeanShen.Framework
         /// <returns></returns>
         ESRI.ArcGIS.Controls.IPageLayoutControlDefault GetIPagelayoutControl();
         /// <summary>
+        /// 得到AxPageLayoutControl
+        /// </summary>
+        /// <returns></returns>
+        ESRI.ArcGIS.Controls.AxPageLayoutControl GetAxPagelayoutControl();
+        /// <summary>
         /// 获得ITOCControl
         /// </summary>
         /// <returns></returns>
         ESRI.ArcGIS.Controls.ITOCControlDefault GetITOCControl();
+        /// <summary>
+        /// 获得AxTOCControl
+        /// </summary>
+        /// <returns></returns>
+        ESRI.ArcGIS.Controls.AxTOCControl GetAxTOCControl();
         /// <summary>
         /// 关闭窗体
         /// </summary>

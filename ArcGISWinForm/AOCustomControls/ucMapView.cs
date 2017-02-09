@@ -54,7 +54,7 @@ namespace SeanShen.AOCustomControls
 
         void axMapControl1_OnMouseMove(object sender, IMapControlEvents2_OnMouseMoveEvent e)
         {
-            this.mApplication.StatusBar.ShowCoordinate(e.mapX, e.mapY);
+            this.mApplication.StatusBar.ShowMapCoordinate(e.mapX, e.mapY);
             if (e.button == 4&&mScreenDisplay!=null)
             {
                 mScreenDisplay.PanMoveTo(mScreenDisplay.DisplayTransformation.ToMapPoint(e.x, e.y));

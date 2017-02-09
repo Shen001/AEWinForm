@@ -34,8 +34,11 @@ namespace SeanShen.ArcGISWinForm
     using DevExpress.LookAndFeel;
     using DevExpress.XtraLayout;
     using DevExpress.XtraEditors;
+
+
     public partial class MainForm : Form, ISeanApplication, ISeanStatusBar, ISeanLayoutManager, ISeanCommandManager, ISeanContextMenuManager
     {
+        const string mxdTestPath = @"F:\空间数据\MXD\test_double.mxd";
 
         public MainForm()
         {
@@ -76,13 +79,14 @@ namespace SeanShen.ArcGISWinForm
         {
             try
             {
-                this.mMapControl.LoadMxFile(@"F:\空间数据\MXD\test_double.mxd");
+                this.mMapControl.LoadMxFile(mxdTestPath);
+                this.mDocumentFileName = mxdTestPath;//设置默认加载的文档路径
                 this.mMapControl.Map.Name = "图层";//加载完修改map的名称
                 this.mMapControl.ActiveView.ContentsChanged();//刷新TOC
 
                 this.tocWindow.GetControl().Refresh();
                 this.mapControlView.GetControl().Refresh();
-                //Application.DoEvents();
+                this.pageLayoutControlView.GetControl().Refresh();
 
                 this.mDefaultCommand = ((ISeanCommandManager)this).GetCommand("D55F27D6-B49C-41B6-9DE3-6E060BFC8B76");
                 this.mDefaultCommand.Run();
@@ -202,7 +206,7 @@ namespace SeanShen.ArcGISWinForm
         private List<ISeanView> viewList = new List<ISeanView>();
 
         private ISeanMapControlView mapControlView;
-        private ISeanPagelayoutView pagelayoutView;
+        private ISeanPagelayoutView pageLayoutControlView;
         private ISeanTocWindow tocWindow;
 
         BarStaticItem staticItem_Message = null;
@@ -244,7 +248,8 @@ namespace SeanShen.ArcGISWinForm
                     }
                     else if (resource.Type == enumResourceType.PageLayoutView)
                     {
-                        this.pagelayoutView = (ISeanPagelayoutView)resource;
+                        this.pageLayoutControlView = (ISeanPagelayoutView)resource;
+                        this.mPageLayoutControl = this.pageLayoutControlView.GetIPageLayoutControl();
                         this.viewList.Add((ISeanView)resource);
                     }
                     this.resourceHashtable.Add(uid, resource);
@@ -365,6 +370,9 @@ namespace SeanShen.ArcGISWinForm
                 dockPanel.ResumeLayout(false);
             }
         }
+
+        LayoutControlGroup mapview_ControlGroup;
+        LayoutControlGroup pagelayoutview_ControlGroup;
         /// <summary>
         /// 创建view视图,暂时是dockpanel~
         /// </summary>
@@ -383,7 +391,7 @@ namespace SeanShen.ArcGISWinForm
             layoutcontrol.Dock = DockStyle.Fill;
             controlGroup.Name = "多视图布局";
 
-            LayoutControlGroup mapview_ControlGroup = controlGroup.AddTabPage() as LayoutControlGroup;
+            mapview_ControlGroup = controlGroup.AddTabPage() as LayoutControlGroup;
             mapview_ControlGroup.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.False;
             mapview_ControlGroup.Name = "mapview";
             mapview_ControlGroup.Text = "地图视图";
@@ -392,26 +400,49 @@ namespace SeanShen.ArcGISWinForm
             mapItem.Control = this.mapControlView.GetControl();
             mapItem.TextVisible = false;//控件默认为true
 
-            LayoutControlGroup pagelayoutview_ControlGroup = controlGroup.AddTabPage() as LayoutControlGroup;
+            pagelayoutview_ControlGroup = controlGroup.AddTabPage() as LayoutControlGroup;
             pagelayoutview_ControlGroup.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
             pagelayoutview_ControlGroup.Name = "pagelayoutview";
             pagelayoutview_ControlGroup.Text = "布局视图";
             LayoutControlItem pagelayoutItem = pagelayoutview_ControlGroup.AddItem();
             pagelayoutItem.Name = "pagelayoutview_Item";
-            pagelayoutItem.Control = this.pagelayoutView.GetControl();
+            pagelayoutItem.Control = this.pageLayoutControlView.GetControl();
             pagelayoutItem.TextVisible = false;
 
             controlGroup.SelectedTabPage = mapview_ControlGroup;
-
+            this.CurrentView = this.mapControlView;//默认当前视图
             this.Controls.Add(layoutcontrol);
 
             ((System.ComponentModel.ISupportInitialize)layoutcontrol).EndInit();
             ((System.ComponentModel.ISupportInitialize)controlGroup).EndInit();
 
-            this.mMapControl = this.mapControlView.GetIMapControl();
             ((Control)this.mapControlView).Dock = System.Windows.Forms.DockStyle.Fill;
+            ((Control)this.pageLayoutControlView).Dock = System.Windows.Forms.DockStyle.Fill;
 
             this.tocWindow.GetITOCControl().SetBuddyControl(this.mapControlView.GetIMapControl());
+
+            controlGroup.SelectedPageChanged += new LayoutTabPageChangedEventHandler(controlGroup_SelectedPageChanged);
+        }
+        /// <summary>
+        /// 切换视图
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void controlGroup_SelectedPageChanged(object sender, LayoutTabPageChangedEventArgs e)
+        {
+            if (e.Page == mapview_ControlGroup as LayoutGroup)
+            {
+                this.CurrentView = this.mapControlView;
+                //this.Synchronizer.ActivateMap();
+                //激活pan工具
+            }
+            else if (e.Page == pagelayoutview_ControlGroup as LayoutGroup)
+            {
+                this.CurrentView = this.pageLayoutControlView;
+                //this.Synchronizer.ActivatePageLayout();
+                //激活选择元素工具
+            }
+            this.DefaultCommand.Run();
         }
 
         /// <summary>
@@ -470,6 +501,15 @@ namespace SeanShen.ArcGISWinForm
                 this.barManager1.EndUpdate();
             }
         }
+        /// <summary>
+        /// 初始化同步器，在程序初始化时同步
+        /// </summary>
+        //private void InitialSynchronizer()
+        //{
+        //    mControlSynchronizer = new Framework.ControlsSynchronizer(mMapControl, mPageLayoutControl);
+        //    mControlSynchronizer.BindControls(true);
+        //    mControlSynchronizer.AddFrameworkControl(this.GetAxTOCControl());
+        //}
     }
 }
 

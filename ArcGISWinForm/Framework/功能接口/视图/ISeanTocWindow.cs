@@ -14,5 +14,7 @@ namespace SeanShen.Framework
     public interface ISeanTocWindow:ISeanDockWindow
     {
         ESRI.ArcGIS.Controls.ITOCControlDefault GetITOCControl();
+
+        ESRI.ArcGIS.Controls.AxTOCControl GetAxTOCControl();
     }
 }

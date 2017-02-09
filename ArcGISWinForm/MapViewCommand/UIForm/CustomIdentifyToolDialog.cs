@@ -213,7 +213,7 @@ namespace SeanShen.MapViewCommand.UIForm
             if (map.LayerCount < 1) return;
             //获取指定类型图层
             UID uid = new UIDClass();
-            //表示搜索的是IDataLayer
+            //表示搜索的是 IDataLayer
             uid.Value = "{6CA416B1-E160-11D2-9F4E-00C04F6BC78E}";
             //布尔参数表示要搜索GroupLayer中的图层
             IEnumLayer layers = map.get_Layers(uid, true);

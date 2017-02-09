@@ -15,6 +15,7 @@ namespace SeanShen.Framework
     {
         protected ISeanApplication m_Application = null;
         protected ESRI.ArcGIS.Controls.IMapControlDefault m_MapControl = null;
+        protected ESRI.ArcGIS.Controls.IPageLayoutControlDefault m_PageLayoutControl = null;
 
         #region  Override BaseTool
         //tool工具构建的时候设置checked
@@ -64,6 +65,7 @@ namespace SeanShen.Framework
                 return;
             this.m_Application = application;
             this.m_MapControl = application.GetIMapControl();
+            this.m_PageLayoutControl = application.GetIPagelayoutControl();
         }
         #endregion
     }

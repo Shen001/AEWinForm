@@ -14,5 +14,7 @@ namespace SeanShen.Framework
     public interface ISeanPagelayoutView : ISeanView
     {
         ESRI.ArcGIS.Controls.IPageLayoutControlDefault GetIPageLayoutControl();
+
+        ESRI.ArcGIS.Controls.AxPageLayoutControl GetAxPagelayouControl();
     }
 }
