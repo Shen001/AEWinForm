@@ -8,6 +8,22 @@ namespace SeanShen.AEUtilities
 {
     public class RGBColorHelper
     {
+        /// <summary>
+        /// 根据颜色值生成IRgbColor对象
+        /// </summary>
+        /// <param name="red"></param>
+        /// <param name="green"></param>
+        /// <param name="blue"></param>
+        /// <returns></returns>
+        public static IRgbColor GetRGB(int red, int green, int blue)
+        {
+            IRgbColor pColor = new RgbColorClass();
+            pColor.Blue = blue;
+            pColor.Green = green;
+            pColor.Red = red;
+            return pColor;
+        }
+
         #region 使用ADF将rgbcolor与color进行转换
         /// <summary>
         /// 讲IRgbColor转换为为System.Drawing.Color

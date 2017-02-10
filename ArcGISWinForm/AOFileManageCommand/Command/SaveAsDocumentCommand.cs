@@ -70,14 +70,7 @@ namespace SeanShen.AOFileManageCommand
             saveDialog.Title = "另存为文档";
             if (saveDialog.ShowDialog() == DialogResult.OK)
             {
-                IMapDocument mapDocument = new MapDocument();
-                mapDocument.Open(m_Application.DocumentFileName);
-
-                IMxdContents contents = m_MapControl.Map as IMxdContents;
-                mapDocument.ReplaceContents(contents);
-                mapDocument.SaveAs(saveDialog.FileName, true, false);
-
-                mapDocument.Close();
+                AEUtilities.MapHelper.SaveAsMxd(saveDialog.FileName,m_MapControl, true);
             }
         }
 

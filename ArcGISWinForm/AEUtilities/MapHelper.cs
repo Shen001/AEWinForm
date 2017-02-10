@@ -40,7 +40,7 @@ namespace SeanShen.AEUtilities
         /// </summary>
         /// <param name="mapControlDefault">当前视图mapcontrol</param>
         /// <returns></returns>
-        public static bool SaveInMxd(IMapControlDefault mapControlDefault)
+        public static bool SaveAsMxd(string saveAsPath, IMapControlDefault mapControlDefault,bool useRelativePath)
         {
             IMxdContents pMxdContents;
             pMxdContents = mapControlDefault.Map as IMxdContents;
@@ -48,7 +48,8 @@ namespace SeanShen.AEUtilities
             pMapDocument.Open(mapControlDefault.DocumentFilename, "");
             pMapDocument.ReplaceContents(pMxdContents);
 
-            pMapDocument.Save(true, true);
+            pMapDocument.SaveAs(saveAsPath,useRelativePath, false);
+            pMapDocument.Close();
             return true;
         }
         /// <summary>
@@ -110,13 +111,13 @@ namespace SeanShen.AEUtilities
         }
         #endregion
 
-        #region Tansform
+        #region 屏幕距离转换地图距离
 
         /// <summary>
         /// 屏幕距离转换为地图距离
         /// </summary>
         /// <param name="pScreenDisplay"></param>
-        /// <param name="pixel"></param>
+        /// <param name="pixel">像素距离</param>
         /// <returns></returns>
         public static double ConvertPixelToMapUnit(IMap pMap, int pixel)
         {
@@ -127,7 +128,7 @@ namespace SeanShen.AEUtilities
         }
 
         /// <summary>
-        /// 屏幕距离转换为地图距离
+        /// 屏幕距离转换为地图距离,用地图可视范围的宽度/设备宽，得到每个像素代表的地图长度
         /// </summary>
         /// <param name="pScreenDisplay"></param>
         /// <param name="pixel"></param>
@@ -147,5 +148,16 @@ namespace SeanShen.AEUtilities
             return pixel * (dMapWidth / nDeviceWidth);
         }
         #endregion
+
+        /// <summary>
+        /// 清除当前地图的选中
+        /// </summary>
+        /// <param name="mapcontrol4"></param>
+        public static void ClearSelection(IMapControl4 mapcontrol4)
+        {
+            mapcontrol4.ActiveView.PartialRefresh(esriViewDrawPhase.esriViewGeoSelection, null, null);
+            mapcontrol4.Map.ClearSelection();
+            mapcontrol4.ActiveView.PartialRefresh(esriViewDrawPhase.esriViewGeoSelection, null, null);
+        }
     }
 }

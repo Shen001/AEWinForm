@@ -16,7 +16,12 @@ using ESRI.ArcGIS.DataSourcesFile;
 
 using System.IO;
 using ESRI.ArcGIS.Carto;
-using ESRI.ArcGIS.esriSystem;
+//using ESRI.ArcGIS.esriSystem;
+using System.Data;
+using System.Data.OleDb;
+using NPOI.HSSF.UserModel;
+using NPOI.XSSF.UserModel;
+using NPOI.SS.UserModel;
 namespace SeanShen.AEUtilities
 {
     /***命名规则
@@ -125,7 +130,7 @@ namespace SeanShen.AEUtilities
             cadDatasetName.WorkspaceName = workspaceName;
 
             //Open the CAD drawing
-            IName name = (IName)cadDatasetName;
+            ESRI.ArcGIS.esriSystem.IName name = (ESRI.ArcGIS.esriSystem.IName)cadDatasetName;
             return (ICadDrawingDataset)name.Open();
         }
 
@@ -187,5 +192,321 @@ namespace SeanShen.AEUtilities
 
 
         #endregion
+
+        #region OleDb加载Excel
+        //通过OleDb加载excel数据
+        public static DataSet LoadDataFromExcel(string filePath)
+        {
+            string connStr = "";
+            string fileType = System.IO.Path.GetExtension(filePath);
+            if (string.IsNullOrEmpty(fileType)) return null;
+
+            if (fileType == ".xls")
+                connStr = "Provider=Microsoft.Jet.OLEDB.4.0;" + "Data Source=" + filePath + ";" + ";Extended Properties=\"Excel 8.0;HDR=YES;IMEX=1\"";
+            else
+                connStr = "Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=" + filePath + ";" + ";Extended Properties=\"Excel 12.0;HDR=YES;IMEX=1\"";
+            string sql_F = "Select * FROM [{0}]";
+
+            OleDbConnection conn = null;
+            OleDbDataAdapter da = null;
+            DataTable dtSheetName = null;
+
+            DataSet ds = new DataSet();
+            try
+            {
+                // 初始化连接，并打开
+                conn = new OleDbConnection(connStr);
+                conn.Open();
+
+                // 获取数据源的表定义元数据                        
+                string SheetName = "";
+                dtSheetName = conn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, new object[] { null, null, null, "TABLE" });
+
+                // 初始化适配器
+                da = new OleDbDataAdapter();
+                for (int i = 0; i < dtSheetName.Rows.Count; i++)
+                {
+                    SheetName = (string)dtSheetName.Rows[i]["TABLE_NAME"];
+
+                    if (SheetName.Contains("$") && !SheetName.Replace("'", "").EndsWith("$"))
+                    {
+                        continue;
+                    }
+
+                    da.SelectCommand = new OleDbCommand(String.Format(sql_F, SheetName), conn);
+                    DataSet dsItem = new DataSet();
+                    da.Fill(dsItem, SheetName);
+
+                    ds.Tables.Add(dsItem.Tables[0].Copy());
+                }
+            }
+            catch (Exception ex)
+            {
+                ds = null;
+                throw ex;
+            }
+            finally
+            {
+                // 关闭连接
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                    da.Dispose();
+                    conn.Dispose();
+                }
+            }
+            return ds;
+        }
+
+        #endregion
+
+        #region NPOI加载Excel
+        /// <summary>
+        /// 使用NPOI读取EXCEL数据--导入空间数据
+        /// </summary>
+        /// <param name="filePath">文件路经</param>
+        /// <param name="typeIndex">类型参数；0-xlsx；1-xls</param>
+        ///<param name="dt">填充的table</param>
+        /// <returns>返回数据集</returns>
+        public static DataTable LoadDataFromExcelByNPOI(string filePath, short typeIndex, DataTable dt)
+        {
+            HSSFWorkbook hssfworkbook;
+            XSSFWorkbook xssfworkbook;
+
+            IList<int> datetimeIndexList = new List<int>();//日期格式的数据的列索引集合
+            if (typeIndex == 0)//xls
+            {
+                using (FileStream file = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+                {
+                    hssfworkbook = new HSSFWorkbook(file);
+                }
+                for (int sheetCount = 0; sheetCount < hssfworkbook.NumberOfSheets; sheetCount++)
+                {
+                    ISheet curSheet = hssfworkbook.GetSheetAt(sheetCount);
+                    System.Collections.IEnumerator rows = curSheet.GetRowEnumerator();
+                    //rows.MoveNext();
+                    if (rows.MoveNext())//第一行是字段名数据
+                    {
+                        HSSFRow row = (HSSFRow)rows.Current;
+                        if (row.PhysicalNumberOfCells != dt.Columns.Count)
+                            return null;
+                        for (int j = 0; j < row.LastCellNum; j++)
+                        {
+                            ICell curCell = row.GetCell(j);
+                            string strColumnName = curCell.ToString();
+                            if (strColumnName.Contains("时间") || strColumnName.Contains("日期"))
+                            {
+                                datetimeIndexList.Add(j);//获得日期格式的列名
+                            }
+                        }
+                    }
+                    while (rows.MoveNext())
+                    {
+                        System.Data.DataRow dr = dt.NewRow();
+                        HSSFRow row = (HSSFRow)rows.Current;
+                        for (int j = 0; j < row.LastCellNum; j++)
+                        {
+                            ICell curCell = row.GetCell(j);
+                            if (curCell != null)
+                            {
+                                if (datetimeIndexList.Contains(j))
+                                {
+                                    string strValue = curCell.DateCellValue.ToString();
+                                    dr[j] = strValue;
+                                }
+                                else
+                                {
+                                    string strValue = curCell.ToString();
+                                    dr[j] = strValue;
+                                }
+                            }
+                            else
+                            {
+                                dr[j] = "";
+                            }
+                        }
+                        dt.Rows.Add(dr);
+                    }
+                }
+            }
+            else if (typeIndex == 1)//xlsx
+            {
+                using (FileStream file = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+                {
+                    xssfworkbook = new XSSFWorkbook(file);
+                }
+                for (int sheetCount = 0; sheetCount < xssfworkbook.NumberOfSheets; sheetCount++)
+                {
+                    ISheet curSheet = xssfworkbook.GetSheetAt(sheetCount);
+                    System.Collections.IEnumerator rows = curSheet.GetRowEnumerator();
+                    if (rows.MoveNext())//第一行是字段名数据
+                    {
+                        XSSFRow row = (XSSFRow)rows.Current;
+                        if (row.PhysicalNumberOfCells != dt.Columns.Count)
+                            return null;//如果列的行号不对应，那么返回null
+                        for (int j = 0; j < row.LastCellNum; j++)
+                        {
+                            ICell curCell = row.GetCell(j);
+                            string strColumnName = curCell.ToString();
+                            if (strColumnName.Contains("时间") || strColumnName.Contains("日期"))
+                            {
+                                datetimeIndexList.Add(j);//获得日期格式的列名
+                            }
+                        }
+                    }
+                    while (rows.MoveNext())
+                    {
+                        System.Data.DataRow dr = dt.NewRow();
+                        XSSFRow row = (XSSFRow)rows.Current;
+                        for (int j = 0; j < row.LastCellNum; j++)
+                        {
+                            ICell curCell = row.GetCell(j);
+                            if (curCell != null)
+                            {
+                                if (datetimeIndexList.Contains(j))
+                                {
+                                    string strValue = curCell.DateCellValue.ToString();
+                                    dr[j] = strValue;
+                                }
+                                else
+                                {
+                                    string strValue = curCell.ToString();
+                                    dr[j] = strValue;
+                                }
+                            }
+                            else
+                            {
+                                dr[j] = "";
+                            }
+                        }
+                        dt.Rows.Add(dr);
+                    }
+                }
+            }
+            return dt;
+        }
+        /// <summary>
+        /// 使用NPOI读取EXCEL数据--导入地名地址
+        /// </summary>
+        /// <param name="filePath">文件路经</param>
+        /// <param name="typeIndex">类型参数；0-xlsx；1-xls</param>
+        /// <returns>返回数据集</returns>
+        public static DataSet LoadDataFromExcelByNPOI(string filePath, short typeIndex)
+        {
+            HSSFWorkbook hssfworkbook;
+            XSSFWorkbook xssfworkbook;
+            DataSet ds = new DataSet();
+            IList<int> datetimeIndexList = new List<int>();//日期格式的数据的列索引集合
+            if (typeIndex == 0)//xls
+            {
+                using (FileStream file = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+                {
+                    hssfworkbook = new HSSFWorkbook(file);
+                }
+                for (int sheetCount = 0; sheetCount < hssfworkbook.NumberOfSheets; sheetCount++)
+                {
+                    DataTable dt = new DataTable();
+                    ISheet curSheet = hssfworkbook.GetSheetAt(sheetCount);
+                    System.Collections.IEnumerator rows = curSheet.GetRowEnumerator();
+                    if (rows.MoveNext())//第一行是字段名数据
+                    {
+                        HSSFRow row = (HSSFRow)rows.Current;
+                        for (int j = 0; j < row.LastCellNum; j++)
+                        {
+                            ICell curCell = row.GetCell(j);
+                            string strColumnName = curCell.ToString();
+                            dt.Columns.Add(strColumnName, Type.GetType("System.String"));
+                        }
+                    }
+                    while (rows.MoveNext())
+                    {
+                        System.Data.DataRow dr = dt.NewRow();
+                        HSSFRow row = (HSSFRow)rows.Current;
+                        for (int j = 0; j < row.LastCellNum; j++)
+                        {
+                            ICell curCell = row.GetCell(j);
+                            if (curCell != null)
+                            {
+                                if (datetimeIndexList.Contains(j))
+                                {
+                                    string strValue = curCell.DateCellValue.ToString();
+                                    dr[j] = strValue;
+                                }
+                                else
+                                {
+                                    string strValue = curCell.ToString();
+                                    dr[j] = strValue;
+                                }
+                            }
+                            else
+                            {
+                                dr[j] = "";
+                            }
+                        }
+                        dt.Rows.Add(dr);
+                    }
+                }
+            }
+            else if (typeIndex == 1)//xlsx
+            {
+                using (FileStream file = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+                {
+                    xssfworkbook = new XSSFWorkbook(file);
+                }
+                for (int sheetCount = 0; sheetCount < xssfworkbook.NumberOfSheets; sheetCount++)
+                {
+                    DataTable dt = new DataTable();
+                    ISheet curSheet = xssfworkbook.GetSheetAt(sheetCount);
+                    System.Collections.IEnumerator rows = curSheet.GetRowEnumerator();
+                    if (rows.MoveNext())//第一行是字段名数据
+                    {
+                        XSSFRow row = (XSSFRow)rows.Current;
+                        for (int j = 0; j < row.LastCellNum; j++)
+                        {
+                            ICell curCell = row.GetCell(j);
+                            string strColumnName = curCell.ToString();
+                            if (strColumnName.Contains("时间") || strColumnName.Contains("日期"))
+                            {
+                                datetimeIndexList.Add(j);
+                            }
+                            dt.Columns.Add(strColumnName, Type.GetType("System.String"));
+                        }
+                    }
+                    DateTime dTime = new DateTime(1900, 1, 1, 0, 0, 0);
+                    while (rows.MoveNext())
+                    {
+                        System.Data.DataRow dr = dt.NewRow();
+                        XSSFRow row = (XSSFRow)rows.Current;
+                        for (int j = 0; j < row.LastCellNum; j++)
+                        {
+                            ICell curCell = row.GetCell(j);
+                            if (curCell != null)
+                            {
+                                if (datetimeIndexList.Contains(j))
+                                {
+                                    string strValue = curCell.DateCellValue.ToString();
+                                    dr[j] = strValue;
+                                }
+                                else
+                                {
+                                    string strValue = curCell.ToString();
+                                    dr[j] = strValue;
+                                }
+                            }
+                            else
+                            {
+                                dr[j] = "";
+                            }
+                        }
+                        dt.Rows.Add(dr);
+                    }
+                    ds.Tables.Add(dt);
+                }
+            }
+            return ds;
+        }
+        #endregion
     }
+
+
 }

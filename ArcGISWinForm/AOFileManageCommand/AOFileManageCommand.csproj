@@ -70,6 +70,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AEUtilities\AEUtilities.csproj">
+      <Project>{91D957AB-2128-4618-907F-78661244C507}</Project>
+      <Name>AEUtilities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Framework\Framework.csproj">
       <Project>{D4C6E4FE-EED6-4AFD-9889-056A5AF676ED}</Project>
       <Name>Framework</Name>

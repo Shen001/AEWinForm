@@ -5,8 +5,6 @@ using System.Text;
 
 namespace SeanShen.AEUtilities
 {
-
-
     /*
         Time: 28/11/2016 13:18  周一
         Author: shenxin
@@ -16,6 +14,7 @@ namespace SeanShen.AEUtilities
     using ESRI.ArcGIS.Geodatabase;
     using ESRI.ArcGIS.Carto;
     using ESRI.ArcGIS.esriSystem;
+    using ESRI.ArcGIS.DataSourcesGDB;
     public class WorkspaceHelper
     {
         /// <summary>
@@ -53,6 +52,39 @@ namespace SeanShen.AEUtilities
             }
             return null;
 
+        }
+
+
+        /// 打开SDE空间数据库工作空间
+        /// </summary>
+        /// <param name="user">用户名</param>
+        /// <param name="password">密码</param>
+        /// <param name="server">服务器</param>
+        /// <param name="instance">实例名</param>
+        /// <param name="database">数据库名称</param>
+        /// <param name="version">版本</param>
+        /// <returns></returns>
+        public static IWorkspace OpenSdeWorkspace(string user, string password, string server, string instance, string database, string version)
+        {
+            try
+            {
+                IPropertySet propertySet = new PropertySetClass();
+                propertySet.SetProperty("SERVER", server);
+                propertySet.SetProperty("INSTANCE", instance);
+                propertySet.SetProperty("DATABASE", database);
+                propertySet.SetProperty("USER", user);
+                propertySet.SetProperty("PASSWORD", password);
+                propertySet.SetProperty("VERSION", version);
+                IWorkspaceFactory2 workspaceFactory = new SdeWorkspaceFactoryClass();
+
+                IWorkspace workspace = workspaceFactory.Open(propertySet, 0);
+                return workspace;
+            }
+            catch
+            {
+
+                return null;
+            }
         }
     }
 }

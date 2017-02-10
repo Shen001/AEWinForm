@@ -86,6 +86,7 @@ namespace SeanShen.AOFileManageCommand
 
             IMap pNewMap = new Map();
             pNewMap.Name = "地图";
+            m_Application.DocumentFileName = null;
 
             m_MapControl.Map = pNewMap;
             m_MapControl.ActiveView.Refresh();

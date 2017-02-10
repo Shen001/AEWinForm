@@ -14,6 +14,7 @@ namespace SeanShen.AOFileManageCommand
     ** 描述： 保存当前文档
     *******************************/
     using SeanShen.Framework;
+    using System.Windows.Forms;
     public class SaveMapDocumentCommand:SeanBaseCommand
     {
         private System.Drawing.Bitmap m_Bitmap;
@@ -72,7 +73,7 @@ namespace SeanShen.AOFileManageCommand
         private void SaveMapDocument()
         {
             //make sure that the current MapDoc is valid first
-            if (m_Application.DocumentFileName != string.Empty && m_MapControl.CheckMxFile(m_Application.DocumentFileName))
+            if (m_Application.DocumentFileName != null&&m_Application.DocumentFileName!=string.Empty && m_MapControl.CheckMxFile(m_Application.DocumentFileName))
             {
                 //create a new instance of a MapDocument class
                 ESRI.ArcGIS.Carto.IMapDocument mapDoc = new ESRI.ArcGIS.Carto.MapDocument();
@@ -84,6 +85,19 @@ namespace SeanShen.AOFileManageCommand
                 //save the document
                 mapDoc.Save(true, false);
                 mapDoc.Close();
+            }
+            else
+            {
+                SaveFileDialog saveDialog = new SaveFileDialog();
+                saveDialog.DefaultExt = ".mxd";
+                saveDialog.Filter = "地图文档(*.mxd)|*.mxd";
+                saveDialog.OverwritePrompt = true;
+                saveDialog.RestoreDirectory = true;
+                saveDialog.Title = "另存为文档";
+                if (saveDialog.ShowDialog() == DialogResult.OK)
+                {
+                    AEUtilities.MapHelper.SaveAsMxd(saveDialog.FileName, m_MapControl, true);
+                }
             }
         }
              

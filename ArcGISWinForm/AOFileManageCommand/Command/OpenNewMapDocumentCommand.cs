@@ -17,7 +17,7 @@ namespace SeanShen.AOFileManageCommand
     using System.Windows.Forms;
     using ESRI.ArcGIS.Carto;
     using ESRI.ArcGIS.Controls;
-    public class OpenNewMapDocumentCommand:SeanShen.Framework.SeanBaseCommand
+    public class OpenNewMapDocumentCommand : SeanShen.Framework.SeanBaseCommand
     {
         private System.Drawing.Bitmap m_Bitmap;
         private DevExpress.XtraBars.BarItem m_BindBarItem;
@@ -83,8 +83,13 @@ namespace SeanShen.AOFileManageCommand
             {
                 string docName = dlg.FileName;
 
-                base.m_MapControl.LoadMxFile(docName);
+                AEUtilities.MapHelper.Load(m_MapControl, docName);
                 base.m_Application.DocumentFileName = docName;
+
+                IActiveView pCurrentActiveView = base.m_MapControl.ActiveView.FocusMap as IActiveView;
+                pCurrentActiveView.Activate(base.m_MapControl.hWnd);
+                base.m_MapControl.ActiveView.Refresh();
+
 
                 //IMapDocument mapDoc = new MapDocument();
                 //if (mapDoc.get_IsPresent(docName) && !mapDoc.get_IsPasswordProtected(docName))
@@ -99,7 +104,7 @@ namespace SeanShen.AOFileManageCommand
                 //}
             }
         }
-             
+
         #endregion
     }
 }
